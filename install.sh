@@ -49,8 +49,10 @@ PREFIX=$HOME make install
 
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
+
 # Install par
-sudo dnf -y install par
+wget http://ftp.us.debian.org/debian/pool/main/p/par/par_1.52-3_armhf.deb
+sudo dpkg install par_1.52-3_armhf.deb 
 
 # Install fzf
 ~/.fzf/install
