@@ -49,6 +49,8 @@ PREFIX=$HOME make install
 
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
+# Install par
+sudo dnf -y install par
 
 # Install fzf
 ~/.fzf/install
