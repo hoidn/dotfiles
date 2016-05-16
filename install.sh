@@ -30,5 +30,7 @@ for file in $files; do
     ln -s $dir/$file ~/$file
 done
 
+git config --global core.excludesfile '~/.gitignore'
+
 cd ~/.vim
 git submodule update --init --recursive
