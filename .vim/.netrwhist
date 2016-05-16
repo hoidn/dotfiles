@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/oliver/Downloads/plotly.js/src/traces/scattergl'
+let g:netrw_dirhist_2='/home/oliver/Downloads/plotly.js/src/traces/heatmap'
+let g:netrw_dirhist_3='/home/oliver/Downloads/plotly.js/src/traces'
+let g:netrw_dirhist_4='/home/oliver/Downloads/plotly.js/src/traces/heatmap'
+let g:netrw_dirhist_5='/home/oliver/Downloads/plotly.js/src/traces'
