@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".bashrc .vimrc .inputrc .vim"
+files=".bashrc .vimrc .inputrc .vim .clvv-fasd-4822024 .fzf"
 
 ##########
 
@@ -32,11 +32,15 @@ done
 
 git config --global core.excludesfile '~/.gitignore'
 
-cd ~/.vim
+#cd ~/.vim
 git submodule update --init --recursive
 
+# Install ranger if necessary
+cd ranger
+python setup.py install --optimize=1 --record=install_log.txt --user
+
 # Install fasd
-cd ~/clvv-fasd-4822024
+cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
 # Install fzf
