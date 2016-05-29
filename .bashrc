@@ -35,3 +35,6 @@ export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
