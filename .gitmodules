@@ -13,3 +13,6 @@
 [submodule "/home/oliver/.fzf"]
 	path = /home/oliver/.fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "ranger"]
+	path = ranger
+	url = https://github.com/hut/ranger.git
