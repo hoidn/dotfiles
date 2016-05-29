@@ -18,6 +18,10 @@ PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1
 # Set default editor
 export EDITOR=vim
 
+# Initialize fasd
+eval "$(fasd --init auto)"
+alias v='f -e vim' # quick opening files with vim
+
 # Collect and immediately reload commands from all shells into bash history:
 # Avoid duplicates
 export HISTCONTROL=ignoredups:erasedups
@@ -29,3 +33,5 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 
 export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

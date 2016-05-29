@@ -34,3 +34,10 @@ git config --global core.excludesfile '~/.gitignore'
 
 cd ~/.vim
 git submodule update --init --recursive
+
+# Install fasd
+cd ~/clvv-fasd-4822024
+PREFIX=$HOME make install
+
+# Install fzf
+~/.fzf/install

@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/YCM"]
 	path = .vim/bundle/YCM
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "/home/oliver/.fzf"]
+	path = /home/oliver/.fzf
+	url = https://github.com/junegunn/fzf.git
