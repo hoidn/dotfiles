@@ -1,0 +1,31 @@
+touch testtt
+touch t2
+search Vid
+search Thron
+open_with vlc
+open_with vlc d
+open_with  vlc d
+search torr
+search The
+search inke
+search Basic
+open_with 
+search to
+open_with google-chrome
+search tor
+search octor
+search octor 
+search pic
+search ame of 
+search So5
+search S05
+search S06
+search asm
+open_with vim
+search pro
+mkdir reading
+touch test.txt
+search rec
+%s
+delete
+
