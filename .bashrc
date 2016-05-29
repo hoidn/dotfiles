@@ -15,6 +15,8 @@ export GPU_MAX_ALLOC_PERCENT=100
 PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
 
+# Set default editor
+export EDITOR=vim
 
 # Collect and immediately reload commands from all shells into bash history:
 # Avoid duplicates
