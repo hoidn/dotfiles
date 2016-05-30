@@ -45,5 +45,9 @@ python setup.py install --optimize=1 --record=install_log.txt --user
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
+# Compile and install YCM
+cd ~/.vim/bundle/YCM
+./install.py --clang-completer
+
 # Install fzf
 ~/.fzf/install
