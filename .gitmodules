@@ -16,3 +16,6 @@
 [submodule "ranger"]
 	path = ranger
 	url = https://github.com/hut/ranger.git
+[submodule ".vim/bundle/fzf-vim"]
+	path = .vim/bundle/fzf-vim
+	url = https://github.com/junegunn/fzf.vim.git

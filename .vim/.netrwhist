@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/oliver/Downloads/plotly.js/src/traces/scattergl'
 let g:netrw_dirhist_2='/home/oliver/Downloads/plotly.js/src/traces/heatmap'
 let g:netrw_dirhist_3='/home/oliver/Downloads/plotly.js/src/traces'
 let g:netrw_dirhist_4='/home/oliver/Downloads/plotly.js/src/traces/heatmap'
 let g:netrw_dirhist_5='/home/oliver/Downloads/plotly.js/src/traces'
 let g:netrw_dirhist_6='/home/oliver/.vim'
+let g:netrw_dirhist_7='/home/oliver/tmp'
+let g:netrw_dirhist_8='/home/oliver/clvv-fasd-4822024'
+let g:netrw_dirhist_9='/home/oliver/.vim'

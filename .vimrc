@@ -27,16 +27,36 @@ let g:jedi#completions_enabled = 1
 let g:jedi#show_call_signatures_delay = 0
 
 
-"set nocompatible
-"filetype off
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-"Bundle 'gmarik/vundle'
-"Bundle 'Valloric/YouCompleteMe'
-"filetype plugin indent on
 
 " Make the undo history persistent
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
 set undodir=~/.vimundo
+
+" Extra key bindings for fzf
+"
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+" - window (nvim only)
+let g:fzf_layout = { 'down': '~40%' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
