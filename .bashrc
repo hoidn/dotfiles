@@ -20,7 +20,12 @@ export EDITOR=vim
 
 # Initialize fasd
 eval "$(fasd --init auto)"
+_fasd_bash_hook_cmd_complete v m j o
+
+# Set up custom fasd aliases
 alias v='f -e vim' # quick opening files with vim
+alias sv='f -sie vim' # quick opening files with vim
+alias c='fasd_cd -d' # remap cd from z to c
 
 # Collect and immediately reload commands from all shells into bash history:
 # Avoid duplicates
@@ -36,5 +41,22 @@ export PATH="$HOME/anaconda2/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# utility function used to write the command in the shell
+writecmd() {
+  perl -e '$TIOCSTI = 0x5412; $l = <STDIN>; $lc = $ARGV[0] eq "-run" ? "\n" : ""; $l =~ s/\s*$/$lc/; map { ioctl STDOUT, $TIOCSTI, $_; } split "", $l;' -- $1
+}
+
+# fh - repeat history
+fh() {
+  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd -run
+}
+
+# fhe - repeat history edit
+fhe() {
+  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd
+}
+
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
+
+alias l='locate $PWD | fzf'
