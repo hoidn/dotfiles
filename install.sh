@@ -12,6 +12,8 @@ files=".bashrc .vimrc .inputrc .vim .clvv-fasd-4822024 .fzf"
 
 ##########
 
+mkdir -p ~/bin
+
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir

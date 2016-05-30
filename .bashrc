@@ -23,8 +23,8 @@ eval "$(fasd --init auto)"
 _fasd_bash_hook_cmd_complete v m j o
 
 # Set up custom fasd aliases
-alias v='f -e vim' # quick opening files with vim
-alias sv='f -sie vim' # quick opening files with vim
+alias v='fasd -e vim' # quick opening files with vim
+alias sv='fasd -sie vim' # quick opening files with vim
 alias c='fasd_cd -d' # remap cd from z to c
 
 # Collect and immediately reload commands from all shells into bash history:
@@ -37,6 +37,7 @@ shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
 
