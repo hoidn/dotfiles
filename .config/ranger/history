@@ -20,17 +20,31 @@ search ame of
 search So5
 search S05
 search S06
-search asm
 open_with vim
 search pro
 mkdir reading
 touch test.txt
 search rec
 %s
-delete
-
 find Videos
 find Video
 up 
 up ohoidn@pslogin02.slac.stanfor.edu:~/
 up ohoidn@pslogin02.slac.stanford.edu:~/
+search Kula
+search asm
+delete
+delete 
+fasd fin
+fasd b
+fzf
+fzf_select 
+fasd  a
+fasd asm
+search conf
+search rang
+
+fasd c book
+fasd book
+fzf_select ash
+fzf_select
