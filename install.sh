@@ -1,7 +1,9 @@
 #!/bin/bash
 ############################
 # .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to any desired
+# dotfiles in ~/dotfiles. It also installs a few utilities, along with
+# their dependencies.
 ############################
 
 ########## Variables
@@ -45,7 +47,7 @@ python setup.py install --optimize=1 --record=install_log.txt --user
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
-# Compile and install YCM
+# Compile and install YCM, and install cmake (needed to build it)
 cd ~/.vim/bundle/YCM
 ./install.py --clang-completer
 
