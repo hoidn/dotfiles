@@ -21,10 +21,24 @@ map <leader>l :wincmd l<CR>
 map <leader>s :set list!<CR>
 	
 " Configure jedi-vim
+" Jedi
+autocmd FileType python setlocal completeopt-=preview
+" Enable call signatures.
+call jedi#configure_call_signatures()
 let g:jedi#use_splits_not_buffers = "bottom"
-let g:jedi#completions_enabled = 1
+let g:jedi#show_call_signatures = 1
 " This gets jedi to show call signatures when YCM is enabled
-let g:jedi#show_call_signatures_delay = 0
+"let g:jedi#show_call_signatures_delay = 0
+
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Configure neocomplete to work with jedi-vim
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
 
 
@@ -46,17 +60,3 @@ let g:fzf_action = {
 " - window (nvim only)
 let g:fzf_layout = { 'down': '~40%' }
 
-" Customize fzf colors to match your color scheme
-"let g:fzf_colors =
-"\ { 'fg':      ['fg', 'Normal'],
-"  \ 'bg':      ['bg', 'Normal'],
-"  \ 'hl':      ['fg', 'Comment'],
-"  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-"  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-"  \ 'hl+':     ['fg', 'Statement'],
-"  \ 'info':    ['fg', 'PreProc'],
-"  \ 'prompt':  ['fg', 'Conditional'],
-"  \ 'pointer': ['fg', 'Exception'],
-"  \ 'marker':  ['fg', 'Keyword'],
-"  \ 'spinner': ['fg', 'Label'],
-"  \ 'header':  ['fg', 'Comment'] }

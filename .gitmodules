@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule ".vim/bundle/YCM"]
-	path = .vim/bundle/YCM
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule ".fzf"]
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
@@ -19,3 +16,6 @@
 [submodule ".vim/bundle/fzf-vim"]
 	path = .vim/bundle/fzf-vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule ".vim/bundle/neocomplete"]
+	path = .vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
