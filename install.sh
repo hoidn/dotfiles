@@ -47,10 +47,8 @@ python setup.py install --optimize=1 --record=install_log.txt --user
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
-# Compile and install YCM, and install cmake (needed to build YCM)
-sudo dnf install cmake
-cd ~/.vim/bundle/YCM
-./install.py --clang-completer
+# Make directory for vim undo history
+mkdir -p $HOME/.vimundo
 
 # Install fzf
 ~/.fzf/install
