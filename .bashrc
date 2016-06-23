@@ -23,9 +23,8 @@ eval "$(fasd --init auto)"
 _fasd_bash_hook_cmd_complete v m j o
 
 # Set up custom fasd aliases
-alias v='fasd -e vim' # quick opening files with vim
+alias fv='fasd -e vim' # quick opening files with vim
 alias sv='fasd -sie vim' # quick opening files with vim
-alias c='fasd_cd -d' # remap cd from z to c
 
 # Collect and immediately reload commands from all shells into bash history:
 # Avoid duplicates
@@ -42,6 +41,17 @@ export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# with fasd (from examples page in the fzf repo)
+v() {
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+}
+
+c() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
 
 # utility function used to write the command in the shell
 writecmd() {
