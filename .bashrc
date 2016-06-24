@@ -12,6 +12,12 @@ fi
 
 export GPU_MAX_ALLOC_PERCENT=100
 
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
+export PATH="$HOME/anaconda2/bin:$PATH"
+export PATH="$HOME/anaconda/bin:$PATH"
+
 PS1='\[\e[0;32m\]\u \h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
 
@@ -35,10 +41,6 @@ shopt -s histappend
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/anaconda3/bin:$PATH"
-export PATH="$HOME/anaconda2/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
