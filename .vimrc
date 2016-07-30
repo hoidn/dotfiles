@@ -44,10 +44,10 @@ let g:neocomplete#enable_smart_case = 1
 
 " Make the undo history persistent
 " tell it to use an undo file
-set undofile
-" set a directory to store the undo history
-set undodir=~/.vimundo
-set formatprg=par
+"set undofile
+"" set a directory to store the undo history
+"set undodir=~/.vimundo
+"set formatprg=par
 
 " Extra key bindings for fzf
 "
@@ -61,3 +61,12 @@ let g:fzf_action = {
 " - window (nvim only)
 let g:fzf_layout = { 'down': '~40%' }
 
+function RangerExplorer()
+    exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
+    if filereadable('/tmp/vim_ranger_current_file')
+        exec 'edit ' . system('cat /tmp/vim_ranger_current_file')
+        call system('rm /tmp/vim_ranger_current_file')
+    endif
+    redraw!
+endfun
+map <Leader>x :call RangerExplorer()<CR>
