@@ -50,7 +50,11 @@ PREFIX=$HOME make install
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
 # Install par
-sudo dnf -y install par
+sudo dnf -y install par the_silver_searcher
 
 # Install fzf
 ~/.fzf/install
+
+# Install YCM
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
