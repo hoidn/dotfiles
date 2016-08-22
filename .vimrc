@@ -10,7 +10,9 @@ vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype cpp setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype h setlocal expandtab tabstop=4 shiftwidth=4
+autocmd Filetype hpp setlocal expandtab tabstop=4 shiftwidth=4
 "
 
 let mapleader=","
@@ -32,7 +34,7 @@ let g:jedi#use_splits_not_buffers = "bottom"
 let g:jedi#completions_enabled = 0
 
 " Set global config file for c languages (based on Debian distro)
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm2.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/ycm2.py'
 
 " Have YCM populate the location list with errors
 let g:ycm_always_populate_location_list = 1

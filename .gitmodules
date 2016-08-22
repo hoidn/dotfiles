@@ -16,9 +16,9 @@
 [submodule ".vim/bundle/fzf-vim"]
 	path = .vim/bundle/fzf-vim
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule ".vim/bundle/vim-clang"]
-	path = .vim/bundle/vim-clang
-	url = https://github.com/justmao945/vim-clang.git
 [submodule ".vim/bundle/YCM"]
 	path = .vim/bundle/YCM
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/YCM-Generator"]
+	path = .vim/bundle/YCM-Generator
+	url = https://github.com/rdnetto/YCM-Generator.git
