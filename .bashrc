@@ -50,9 +50,37 @@ v() {
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
 }
 
+# change to directory with fasd | fzf
 c() {
   local dir
   dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
+# open in vim with fzf search on results from locate and find. Defaults to searching local directory.
+vf() {
+	local dir
+	local file
+	if [ -z "$1" ]
+	then
+		dir=$PWD
+	else
+		dir=$1
+	fi
+	file="$({ locate $dir ; find $dir ; } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+}
+
+# open with xdg-open based on results from locate and find. Defaults to searching local directory.
+xo() {
+	local dir
+	local file
+	if [ -z "$1" ]
+	then
+		dir=$PWD
+	else
+		dir=$1
+	fi
+	file="$({ locate $dir ; find $dir ;  } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && xdg-open "${file}" || return 1
+	echo $dir
 }
 
 # utility function used to write the command in the shell
