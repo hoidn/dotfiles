@@ -26,11 +26,12 @@ export EDITOR=vim
 
 # Initialize fasd
 eval "$(fasd --init auto)"
-_fasd_bash_hook_cmd_complete v m j o
 
-# Set up custom fasd aliases
-alias fv='fasd -e vim' # quick opening files with vim
-alias sv='fasd -sie vim' # quick opening files with vim
+#_fasd_bash_hook_cmd_complete v m j o
+
+## Set up custom fasd aliases
+#alias fv='fasd -e vim' # quick opening files with vim
+#alias sv='fasd -sie vim' # quick opening files with vim
 
 # Collect and immediately reload commands from all shells into bash history:
 # Avoid duplicates
@@ -102,3 +103,4 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 alias l='locate $PWD | fzf'
+alias r=ranger
