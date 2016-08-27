@@ -5,9 +5,6 @@ call pathogen#infect()
 
 
 syntax on
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-vnoremap <leader>p "_dP
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype cpp setlocal expandtab tabstop=4 shiftwidth=4
@@ -33,8 +30,18 @@ let g:jedi#show_call_signatures_delay = 0
 let g:jedi#use_splits_not_buffers = "bottom"
 let g:jedi#completions_enabled = 0
 
+" jedi key mappings
+autocmd Filetype python vnoremap <leader>d "_d
+autocmd Filetype python vnoremap <leader>p "_dP
+
+" YCM clang key mappings
+autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
+
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_global_ycm_extra_conf = '/home/oliver/dev/clusters/PlanetaryImager/.ycm_extra_conf.py'
+"let g:ycm_extra_conf_vim_data = ['&filetype']
+
 " Set global config file for c languages (based on Debian distro)
-"let g:ycm_global_ycm_extra_conf = '~/.vim/ycm2.py'
 
 " Have YCM populate the location list with errors
 let g:ycm_always_populate_location_list = 1
