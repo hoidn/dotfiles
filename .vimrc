@@ -35,11 +35,13 @@ autocmd Filetype python vnoremap <leader>d "_d
 autocmd Filetype python vnoremap <leader>p "_dP
 
 " YCM clang key mappings
+"let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_extra_conf_vim_data = ['&filetype']
 autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
+
 
 "let g:ycm_confirm_extra_conf = 0
 "let g:ycm_global_ycm_extra_conf = '/home/oliver/dev/clusters/PlanetaryImager/.ycm_extra_conf.py'
-"let g:ycm_extra_conf_vim_data = ['&filetype']
 
 " Set global config file for c languages (based on Debian distro)
 
