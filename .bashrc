@@ -80,7 +80,7 @@ xo() {
 	else
 		dir=$1
 	fi
-	file="$({ locate $dir ; find $dir &  } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && "xdg-open ${file}" && xdg-open "${file}" || return 1
+	file="$({ locate $dir ; find $dir &  } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "xdg-open ${file}" && xdg-open "${file}" || return 1
 	echo $dir
 }
 
