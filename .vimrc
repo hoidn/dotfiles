@@ -43,25 +43,40 @@ autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
 "let g:ycm_confirm_extra_conf = 0
 "let g:ycm_global_ycm_extra_conf = '/home/oliver/dev/clusters/PlanetaryImager/.ycm_extra_conf.py'
 
-" Set global config file for c languages (based on Debian distro)
-
 " Have YCM populate the location list with errors
 let g:ycm_always_populate_location_list = 1
 
 
 " Make the undo history persistent
-" tell it to use an undo file
-"set undofile
-"" set a directory to store the undo history
-"set undodir=~/.vimundo
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vimundo
+
 "set formatprg=par
 
-" Extra key bindings for fzf
+" Extra key bindings for fzf-vim
 "
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+nnoremap <silent> <leader><space> :Files<CR>
+nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <leader>f :Locate 
+"nnoremap <silent> <leader>A :Windows<CR>
+"nnoremap <silent> <leader>; :BLines<CR>
+"nnoremap <silent> <leader>o :BTags<CR>
+"nnoremap <silent> <leader>O :Tags<CR>
+"nnoremap <silent> <leader>? :History<CR>
+"nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+"nnoremap <silent> <leader>. :AgIn 
+"
+"nnoremap <silent> K :call SearchWordWithAg()<CR>
+"vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
+"nnoremap <silent> <leader>gl :Commits<CR>
+"nnoremap <silent> <leader>ga :BCommits<CR>
+"nnoremap <silent> <leader>ft :Filetypes<CR>
 
 " Default fzf layout
 " - down / up / left / right
@@ -76,4 +91,6 @@ function RangerExplorer()
     endif
     redraw!
 endfun
+
+" Enter ranger file manager
 map <Leader>x :call RangerExplorer()<CR>
