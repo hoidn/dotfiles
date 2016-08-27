@@ -1,5 +1,6 @@
 #!/bin/bash
 #Install various software
+dir=~/dotfiles
 
 git config --global core.excludesfile '~/.gitignore'
 
@@ -23,7 +24,8 @@ sudo dnf -y install par the_silver_searcher
 ~/.fzf/install
 
 # Install YCM
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
+cd ~/.vim/bundle/YCM
+./install.py --clang-completer &
 
-./copyconfig.sh
+cd $dir
+.copyconfig.sh
