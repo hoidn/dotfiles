@@ -14,7 +14,7 @@ autocmd Filetype hpp setlocal expandtab tabstop=4 shiftwidth=4
 
 let mapleader=","
 
-"map <leader>h :wincmd h<CR>
+map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
@@ -62,18 +62,39 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 nnoremap <silent> <leader><space> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>f :Locate 
-"nnoremap <silent> <leader>A :Windows<CR>
+nnoremap <leader>w :Windows<CR>
+nnoremap <leader>c :History:<CR>
 "nnoremap <silent> <leader>; :BLines<CR>
 "nnoremap <silent> <leader>o :BTags<CR>
 "nnoremap <silent> <leader>O :Tags<CR>
 "nnoremap <silent> <leader>? :History<CR>
 "nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-"nnoremap <silent> <leader>. :AgIn 
+nnoremap  <leader>a :Ag<CR>
+vnoremap  K :call SearchVisualSelectionWithAg()<CR>
+
+function! SearchVisualSelectionWithAg() range
+	let old_reg = getreg('"')
+	let old_regtype = getregtype('"')
+	let old_clipboard = &clipboard
+	set clipboard&
+	normal! ""gvy
+	let selection = getreg('"')
+	call setreg('"', old_reg, old_regtype)
+	let &clipboard = old_clipboard
+	execute 'Ag' selection
+endfunction
+
+" TODO: think about using this:
+"function! s:ag_in(...)
+"  call fzf#vim#ag(join(a:000[1:], ' '), extend({'dir': a:1}, g:fzf#vim#default_layout))
+"endfunction
+"
+"command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
+
 "
 "nnoremap <silent> K :call SearchWordWithAg()<CR>
-"vnoremap <silent> K :call SearchVisualSelectionWithAg()<CR>
 "nnoremap <silent> <leader>gl :Commits<CR>
 "nnoremap <silent> <leader>ga :BCommits<CR>
 "nnoremap <silent> <leader>ft :Filetypes<CR>
