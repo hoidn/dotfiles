@@ -19,6 +19,9 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
+" multiline edit shortcut
+" noremap <leader>n :norm 
+
 " Toggle showing invisible characters
 map <leader>s :set list!<CR>
 	
@@ -45,6 +48,9 @@ autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
 
 " Have YCM populate the location list with errors
 let g:ycm_always_populate_location_list = 1
+
+" Autoclose preview window
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " Make the undo history persistent
