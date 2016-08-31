@@ -8,11 +8,12 @@ syntax on
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype c setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype cpp setlocal expandtab tabstop=4 shiftwidth=4
+au BufRead,BufNewFile *.cc setfiletype cpp
 autocmd Filetype h setlocal expandtab tabstop=4 shiftwidth=4
 autocmd Filetype hpp setlocal expandtab tabstop=4 shiftwidth=4
 "
 
-let mapleader=","
+let mapleader=" "
 
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -24,6 +25,16 @@ map <leader>l :wincmd l<CR>
 
 " Toggle showing invisible characters
 map <leader>s :set list!<CR>
+
+let g:syntastic_always_populate_loc_list = 1
+" Configure syntastic for python
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+        \ "active_filetypes": ["python"] }
+let g:syntastic_python_checkers = ['pyflakes']
+
+noremap <leader>] :lnext<CR>
+noremap <leader>[ :lprevious<CR>
 	
 " This gets jedi to show call signatures when YCM is enabled
 call jedi#configure_call_signatures()
@@ -41,6 +52,7 @@ autocmd Filetype python vnoremap <leader>p "_dP
 "let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_extra_conf_vim_data = ['&filetype']
 autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
+autocmd Filetype c noremap <leader>d :YcmCompleter GoTo<CR>
 
 
 "let g:ycm_confirm_extra_conf = 0
@@ -58,7 +70,7 @@ set undofile
 " set a directory to store the undo history
 set undodir=~/.vimundo
 
-"set formatprg=par
+set formatprg=par
 
 " Extra key bindings for fzf-vim
 "
@@ -67,7 +79,7 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-nnoremap <silent> <leader><space> :Files<CR>
+nnoremap <silent> <leader>F :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>f :Locate 
 nnoremap <leader>w :Windows<CR>
