@@ -20,6 +20,8 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
+nnoremap <C-w> :w<CR>
+
 " multiline edit shortcut
 " noremap <leader>n :norm 
 
@@ -72,6 +74,9 @@ set undodir=~/.vimundo
 
 set formatprg=par
 
+" Disable polyglot vim syntax
+let g:polyglot_disabled = ['python']
+
 " Extra key bindings for fzf-vim
 "
 let g:fzf_action = {
@@ -83,7 +88,10 @@ nnoremap <silent> <leader>F :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>f :Locate 
 nnoremap <leader>w :Windows<CR>
-nnoremap <leader>c :History:<CR>
+" vim command history
+nnoremap <leader>H :History:<CR>
+" recently opened files
+nnoremap <leader>c :History<CR>
 "nnoremap <silent> <leader>; :BLines<CR>
 "nnoremap <silent> <leader>o :BTags<CR>
 "nnoremap <silent> <leader>O :Tags<CR>
