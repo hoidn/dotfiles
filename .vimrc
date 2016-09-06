@@ -15,6 +15,9 @@ autocmd Filetype hpp setlocal expandtab tabstop=4 shiftwidth=4
 
 let mapleader=" "
 
+" map , to toggle fold
+nnoremap , za
+
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
