@@ -19,10 +19,16 @@ git submodule update --init --recursive
 
 # If python isn't installed on this system, then download and install anaconda
 if ! command_exists python ; then
-	wget https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
-	bash Anaconda2-4.1.1-Linux-x86_64.sh -b -p $HOME/anaconda3
+	wget https://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh
+	bash Anaconda3-4.1.1-Linux-x86_64.sh -b -p $HOME/anaconda3
 	export PATH="$HOME/anaconda3/bin:$PATH"
 fi
+## If python isn't installed on this system, then download and install anaconda
+#if ! command_exists python ; then
+#	wget https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
+#	bash Anaconda2-4.1.1-Linux-x86_64.sh -b -p $HOME/anaconda3
+#	export PATH="$HOME/anaconda2/bin:$PATH"
+#fi
 
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
