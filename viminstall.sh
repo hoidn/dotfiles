@@ -13,7 +13,7 @@ sudo ln -s /usr/bin/xsubpp /usr/share/perl5/ExtUtils/xsubpp
 cd ~
 git clone https://github.com/vim/vim.git
 cd vim
-make clean
+make distclean
 
 CFLAGS+="-O -fPIC -Wformat" ./configure --with-features=huge \
             --enable-multibyte \
