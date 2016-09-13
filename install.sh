@@ -1,6 +1,15 @@
 #!/bin/bash
 #Install various software
 dir=~/dotfiles
+ANACONDA_VER='3-4.1.1'
+ANACONDA_DIR=$HOME/anaconda3
+PYTHON_VER=3
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
 
 bash copyconfig.sh
 
@@ -8,33 +17,24 @@ bash copyconfig.sh
 cd ranger
 python setup.py install --optimize=1 --record=install_log.txt --user
 
-command_exists () {
-    type "$1" &> /dev/null ;
-}
-
 git config --global core.excludesfile '~/.gitignore'
 
 #cd ~/.vim
 git submodule update --init --recursive
 
-# If python isn't installed on this system, then download and install anaconda
-if ! command_exists python ; then
-	wget https://repo.continuum.io/archive/Anaconda3-4.1.1-Linux-x86_64.sh
-	bash Anaconda3-4.1.1-Linux-x86_64.sh -b -p $HOME/anaconda3
-	export PATH="$HOME/anaconda3/bin:$PATH"
+# download and install anaconda
+# TODO: necessary with vim-enhanced?
+if ! command_exists python$PYTHON_VER ; then
+	wget https://repo.continuum.io/archive/Anaconda$ANACONDA_VER-Linux-x86_64.sh
+	bash Anaconda$ANACONDA_VER-Linux-x86_64.sh -b -p $ANACONDA_DIR
+	export PATH="$ANACONDA_DIR:$PATH"
 fi
-## If python isn't installed on this system, then download and install anaconda
-#if ! command_exists python ; then
-#	wget https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh
-#	bash Anaconda2-4.1.1-Linux-x86_64.sh -b -p $HOME/anaconda3
-#	export PATH="$HOME/anaconda2/bin:$PATH"
-#fi
+
 
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
 mkdir -p $HOME/.local/bin
-# Install par
-sudo dnf -y install par the_silver_searcher gcc-c++
+
 
 # Install fzf
 ~/.fzf/install
