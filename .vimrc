@@ -23,7 +23,9 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
-nnoremap <C-w> :w<CR>
+" Map ctrl-s to save in normal and insert mode
+nmap <C-s> :w<CR>
+imap <c-s> <Esc>:w<CR>
 
 " multiline edit shortcut
 " noremap <leader>n :norm 
