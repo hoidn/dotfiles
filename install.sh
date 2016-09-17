@@ -1,15 +1,15 @@
 #!/bin/bash
 #Install various software
 dir=~/dotfiles
-ANACONDA_VER='3-4.1.1'
-ANACONDA_DIR=$HOME/anaconda3
-PYTHON_VER=3
+ANACONDA_VER='2-4.1.1'
+ANACONDA_DIR=$HOME/anaconda2
+PYTHON_VER=2
 
 command_exists () {
     type "$1" &> /dev/null ;
 }
 
-sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
+#sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
 
 bash copyconfig.sh
 
@@ -41,7 +41,7 @@ mkdir -p $HOME/.local/bin
 
 # Install YCM
 cd ~/.vim/bundle/YCM
-./install.py --clang-completer &
+./install.py --clang-completer
 
 # Install fasd
 cd ~/.clvv-fasd-4822024
