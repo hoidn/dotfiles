@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = https://github.com/jpalardy/vim-slime.git
+[submodule "tig"]
+	path = tig
+	url = https://github.com/jonas/tig.git

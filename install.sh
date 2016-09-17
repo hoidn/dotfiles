@@ -46,3 +46,7 @@ cd ~/.vim/bundle/YCM
 # Install fasd
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
+
+# Install tig
+cd $dir/tig
+(make > tig.log 2>&1 && make install >> tig.log 2>&1 ) &
