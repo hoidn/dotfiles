@@ -11,6 +11,12 @@ command_exists () {
 
 sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
 
+#cd ~/.vim
+git submodule update --init --recursive
+
+# Install fzf
+~/.fzf/install
+
 bash copyconfig.sh
 
 # Install ranger if necessary
@@ -19,8 +25,6 @@ python setup.py install --optimize=1 --record=install_log.txt --user
 
 git config --global core.excludesfile '~/.gitignore'
 
-#cd ~/.vim
-git submodule update --init --recursive
 
 # download and install anaconda
 # TODO: necessary with vim-enhanced?
@@ -36,8 +40,6 @@ mkdir -p $HOME/.vimundo
 mkdir -p $HOME/.local/bin
 
 
-# Install fzf
-~/.fzf/install
 
 # Install YCM
 cd ~/.vim/bundle/YCM
