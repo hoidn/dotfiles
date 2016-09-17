@@ -153,3 +153,5 @@ cmap w!! w !sudo tee > /dev/null %
 let g:slime_target = "tmux"
 
 set backspace=indent,eol,start " make backspace work over linebreaks, etc.
+
+set clipboard=unnamed
