@@ -6,6 +6,8 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
+git config --global alias.tree "log --oneline --decorate --all --graph"
+
 sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
 
 #cd ~/.vim
