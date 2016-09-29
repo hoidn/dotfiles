@@ -1,9 +1,6 @@
 #!/bin/bash
 #Install various software
-dir=~/dotfiles
-ANACONDA_VER='3-4.1.1'
-ANACONDA_DIR=$HOME/anaconda3
-PYTHON_VER=3
+source env.sh
 
 command_exists () {
     type "$1" &> /dev/null ;
@@ -49,6 +46,3 @@ cd ~/.vim/bundle/YCM
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
-# Install tig
-cd $dir/tig
-(make > tig.log 2>&1 && make install >> tig.log 2>&1 ) &
