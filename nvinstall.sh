@@ -1,5 +1,6 @@
-sudo dnf -y copr enable dperson/neovim
-sudo dnf -y install neovim
+git clone https://github.com/neovim/neovim.git
+cd neovim
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH=$HOME/neovim"
+make install
 
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln -s `pwd`/build/bin/nvim ~/.local/bin/nvim 

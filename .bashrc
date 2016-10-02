@@ -129,5 +129,6 @@ fhe() {
 alias l='locate $PWD | fzf'
 alias r=ranger
 
-bind -r '\C-s'
-stty -ixon
+# problematic for non-interactive sessions?
+#bind -r '\C-s'
+#stty -ixon
