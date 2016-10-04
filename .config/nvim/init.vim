@@ -41,4 +41,3 @@ nmap <C-c><C-x> vip:TREPLSendLine<CR>
 
 " lint on save:
 autocmd BufWritePost,BufEnter * Neomake
-
