@@ -14,8 +14,8 @@ export GPU_MAX_ALLOC_PERCENT=100
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda/bin:$PATH"
 
 PS1='\[\e[0;32m\]\u \h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
@@ -46,7 +46,7 @@ trap 'preexec' DEBUG
 
 
 # Set default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # Initialize fasd
 eval "$(fasd --init auto)"
@@ -72,7 +72,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 # with fasd (from examples page in the fzf repo)
 v() {
   local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
 }
 
 # change to directory with fasd | fzf
@@ -91,7 +91,7 @@ vf() {
 	else
 		dir=$1
 	fi
-	file="$({ locate $dir & find $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && vi "${file}" || return 1
+	file="$({ locate $dir & find $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && $EDITOR "${file}" || return 1
 }
 
 # open with xdg-open based on results from locate and find. Defaults to searching local directory.

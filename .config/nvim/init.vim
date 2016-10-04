@@ -26,6 +26,7 @@ let g:neoterm_position='vertical'
 let g:neomake_python_enabled_makers = ['pyflakes']
 
 nmap <C-c><C-c> vip:TREPLSendSelection<CR>
+nmap <C-c><C-x> vip:TREPLSendLine<CR>
 
 " Make window navigation consistent
 :tnoremap <A-h> <C-\><C-n><C-w>h
@@ -40,4 +41,3 @@ nmap <C-c><C-c> vip:TREPLSendSelection<CR>
 
 " lint on save:
 autocmd BufWritePost,BufEnter * Neomake
-
