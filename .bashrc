@@ -14,8 +14,8 @@ export GPU_MAX_ALLOC_PERCENT=100
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda/bin:$PATH"
 
 PS1='\[\e[0;32m\]\u \h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
