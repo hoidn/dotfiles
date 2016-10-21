@@ -11,6 +11,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
 Plug 'ervandew/supertab'
+Plug 'sheerun/vim-polyglot'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf'
