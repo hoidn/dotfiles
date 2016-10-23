@@ -46,6 +46,6 @@
 [submodule "tig"]
 	path = tig
 	url = https://github.com/jonas/tig.git
-[submodule ".emacs.d/plugins/yasnippet"]
-	path = .emacs.d/plugins/yasnippet
-	url = https://github.com/capitaomorte/yasnippet
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/syl20bnr/spacemacs
