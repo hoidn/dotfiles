@@ -2,6 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
+	. ~/.profile
 	. /etc/bashrc
 fi
 

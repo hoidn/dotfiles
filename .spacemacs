@@ -301,7 +301,12 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  )
+;; emacs lisp tab completion
+  ;; http://stackoverflow.com/questions/7022898/emacs-autocompletion-in-emacs-lisp-mode
+(setq tab-always-indent 'complete)
+(add-to-list 'completion-styles 'initials t)
+)
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
