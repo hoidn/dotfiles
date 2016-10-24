@@ -1,0 +1,16 @@
+#!/bin/sh
+# Common rc file for bash and zsh
+
+# with fasd (from examples page in the fzf repo)
+v() {
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
+}
+
+# change to directory with fasd | fzf
+c() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
+

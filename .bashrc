@@ -70,22 +70,10 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# with fasd (from examples page in the fzf repo)
-v() {
-  local file
-  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
-}
-
-# change to directory with fasd | fzf
-c() {
-  local dir
-  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
-
 # open in vim with fzf search on results from locate and find. Defaults to searching local directory.
 vf() {
 	local dir
-	local file
+	local filze
 	if [ -z "$1" ]
 	then
 		dir=$PWD
@@ -133,3 +121,5 @@ alias r=ranger
 # problematic for non-interactive sessions?
 #bind -r '\C-s'
 #stty -ixon
+
+source ~/.shrc

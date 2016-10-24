@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".bashrc .vimrc .vimrc_common .inputrc .vim .clvv-fasd-4822024 .fzf .config/ranger .config/nvim .spacemacs .emacs.d .profile .zshrc"
+files=".bashrc .vimrc .vimrc_common .inputrc .vim .clvv-fasd-4822024 .fzf .config/ranger .config/nvim .spacemacs .emacs.d .profile .zshrc .shrc"
 
 ##########
 
