@@ -42,7 +42,7 @@ mkdir -p $HOME/.local/bin
 
 # Install YCM
 cd ~/.vim/bundle/YCM
-./install.py --clang-completer &
+./install.py --clang-completer
 
 # Install fasd
 cd ~/.clvv-fasd-4822024
