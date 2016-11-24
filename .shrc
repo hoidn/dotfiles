@@ -1,0 +1,30 @@
+#!/bin/sh
+# Common rc file for bash and zsh
+
+# Environment variables
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/anaconda2/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
+export PATH="$HOME/anaconda/bin:$PATH"
+
+# Set default editor
+export EDITOR=nvim
+alias vi=nvim
+
+
+# Initialize fasd
+eval "$(fasd --init auto)"
+
+# with fasd (from examples page in the fzf repo)
+v() {
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
+}
+
+# change to directory with fasd | fzf
+c() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+

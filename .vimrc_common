@@ -18,7 +18,9 @@ nmap <C-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
 
 " multiline edit shortcut
-" noremap <leader>n :norm 
+ noremap <leader>n :norm 
+ "noremap <leader>i :norm i#<CR>
+ autocmd Filetype python vmap <leader>c :norm i#<CR>
 
 " Toggle showing invisible characters
 map <leader>s :set list!<CR>
