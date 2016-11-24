@@ -6,6 +6,8 @@ let mapleader=" "
 nnoremap , za
 
 imap jk <Esc>
+" Match default binding in Spacemacs
+imap fd <Esc>
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
@@ -20,6 +22,12 @@ imap <c-s> <Esc>:w<CR>
 
 " Toggle showing invisible characters
 map <leader>s :set list!<CR>
+
+" Call norm ex command in visual mode
+vmap <leader>n :norm 
+
+" un-highlight search results
+nmap <leader>/ :nohlsearch<CR>
 
 noremap ]<leader> :lnext<CR>
 noremap [<leader> :lprevious<CR>
@@ -89,3 +97,4 @@ let g:jedi#completions_enabled = 0
 " jedi key mappings
 autocmd Filetype python vnoremap <leader>d "_d
 autocmd Filetype python vnoremap <leader>p "_dP
+autocmd Filetype python vmap <leader>c :norm i#<CR>
