@@ -54,11 +54,25 @@ export HISTCONTROL=ignoredups:erasedups
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+bind -x '"\C-o": vim $(fzf);'
 
 # open in vim with fzf search on results from locate and find. Defaults to searching local directory.
 vf() {
@@ -98,6 +112,20 @@ xo() {
 	fi
 	file="$({ locate $dir & find $dir &  } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "xdg-open ${file}" && xdg-open "${file}" || return 1
 	echo $dir
+}
+
+# open with xdg-open based on results from locate. Defaults to searching local directory.
+lf() {
+	local dir
+	local file
+	if [ -z "$1" ]
+	then
+		dir=$PWD
+	else
+		dir=$1
+	fi
+	file="$( locate $dir  2>/dev/null | fzf -1 -0 --no-sort +m)" && history -s || return 1
+	echo $file
 }
 
 # utility function used to write the command in the shell

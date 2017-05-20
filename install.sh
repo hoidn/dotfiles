@@ -48,3 +48,8 @@ cd ~/.vim/bundle/YCM
 cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
+# Install Rust
+bash rustinstall.sh
+
+# Install ripgrep
+cargo install ripgrep

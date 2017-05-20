@@ -7,6 +7,8 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/anaconda2/bin:$PATH"
 export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/anaconda/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
 
 # Set default editor
 export EDITOR=nvim
@@ -28,3 +30,21 @@ c() {
   dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
 }
 
+# search tmux sessions with fzf
+tm() {
+  local session
+  newsession=${1:-new}
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+    tmux attach-session -t "$session" || tmux new-session -s $newsession
+}
+
+# search git log with fzf, copying hash onto the clipboard.
+# see http://owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
+gl() {  
+  hash=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |  fzf | awk '{print $1}')
+  echo $hash | xclip
+  git showtool $hash
+}
+
+alias mpc='mplayer -cache 30000'
