@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/usr/lib/modules/4.8.13-100.fc23.x86_64/build'
+let g:netrw_dirhist_2='/home/oliver'
+let g:netrw_dirhist_3='/home/oliver/dotfiles/.config/nvim'
+let g:netrw_dirhist_4='/home/oliver/dotfiles/.config'
+let g:netrw_dirhist_5='/home/oliver/dotfiles'
+let g:netrw_dirhist_6='/home/oliver'
+let g:netrw_dirhist_7='/home/oliver/dev/xraycam'
+let g:netrw_dirhist_8='/home/oliver/dev/xraycam/lib'
+let g:netrw_dirhist_9='/home/oliver/dev/xraycam'
