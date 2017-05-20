@@ -3,7 +3,7 @@
 *.pyc
 *.swn
 *.swm
- .config/nvim/.netrwhist 
- .config/ranger/bookmarks 
- .config/ranger/history 
- .config/ranger/tagged
+.config/nvim/.netrwhist 
+.config/ranger/bookmarks 
+.config/ranger/history 
+.config/ranger/tagged
