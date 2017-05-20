@@ -49,3 +49,18 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = https://github.com/syl20bnr/spacemacs
+[submodule ".vim/bundle/vim-material-theme"]
+	path = .vim/bundle/vim-material-theme
+	url = https://github.com/jdkanani/vim-material-theme
+[submodule ".vim/plugged/vim-material-theme"]
+	path = .vim/plugged/vim-material-theme
+	url = https://github.com/jdkanani/vim-material-theme
+[submodule ".vim/bundle/seoul256.vim"]
+	path = .vim/bundle/seoul256.vim
+	url = https://github.com/junegunn/seoul256.vim
+[submodule ".config/nvim/bundle/neomake"]
+	path = .config/nvim/bundle/neomake
+	url = https://github.com/neomake/neomake.git
+[submodule ".config/nvim/bundle/neoterm"]
+	path = .config/nvim/bundle/neoterm
+	url = https://github.com/kassio/neoterm.git

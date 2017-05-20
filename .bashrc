@@ -73,6 +73,19 @@ vf() {
 	file="$({ locate $dir & find $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && $EDITOR "${file}" || return 1
 }
 
+# open in vim with fzf search on results from locate and find. Defaults to searching local directory.
+lf() {
+	local dir
+	local filze
+	if [ -z "$1" ]
+	then
+		dir=$PWD
+	else
+		dir=$1
+	fi
+	file="$({ locate $dir & find . -regex $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && $EDITOR "${file}" || return 1
+}
+
 # open with xdg-open based on results from locate and find. Defaults to searching local directory.
 xo() {
 	local dir
