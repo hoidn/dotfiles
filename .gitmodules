@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/fzf-vim"]
 	path = .vim/bundle/fzf-vim
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule ".vim/bundle/YCM"]
-	path = .vim/bundle/YCM
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule ".vim/bundle/YCM-Generator"]
 	path = .vim/bundle/YCM-Generator
 	url = https://github.com/rdnetto/YCM-Generator.git
@@ -64,3 +61,9 @@
 [submodule ".config/nvim/bundle/neoterm"]
 	path = .config/nvim/bundle/neoterm
 	url = https://github.com/kassio/neoterm.git
+[submodule ".vim/bundle/vim-yankstack"]
+	path = .vim/bundle/vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule ".vim/bundle/neocomplete.vim"]
+	path = .vim/bundle/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim.git
