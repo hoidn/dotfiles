@@ -154,3 +154,4 @@ alias r=ranger
 #stty -ixon
 
 source ~/.shrc
+export PATH="/Users/ohoidn/anaconda2/bin:$PATH"

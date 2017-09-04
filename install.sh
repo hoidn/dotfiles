@@ -1,5 +1,6 @@
 #!/bin/bash
 #Install various software
+BASE=`pwd`
 source env.sh
 
 command_exists () {
@@ -8,7 +9,7 @@ command_exists () {
 
 git config --global alias.tree "log --oneline --decorate --all --graph"
 
-sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel cmake tmux vim-enhanced
+# sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel tmux vim-enhanced
 
 #cd ~/.vim
 git submodule update --init --recursive
@@ -49,7 +50,12 @@ cd ~/.clvv-fasd-4822024
 PREFIX=$HOME make install
 
 # Install Rust
-bash rustinstall.sh
+if ! command_exists cargo ; then
+	cd $BASE
+	bash rustinstall.sh
+fi
 
 # Install ripgrep
-cargo install ripgrep
+if ! command_exists rg ; then
+	cargo install ripgrep
+fi

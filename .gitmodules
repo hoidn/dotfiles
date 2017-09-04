@@ -67,3 +67,9 @@
 [submodule ".vim/bundle/neocomplete.vim"]
 	path = .vim/bundle/neocomplete.vim
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "neovim"]
+	path = neovim
+	url = https://github.com/neovim/neovim.git
+[submodule "cmake"]
+	path = cmake
+	url = https://gitlab.kitware.com/cmake/cmake.git
