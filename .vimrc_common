@@ -1,5 +1,5 @@
 "disables YCM
-"let g:loaded_youcompleteme = 1
+let g:loaded_youcompleteme = 0
 set path=$PWD/**
 
 call pathogen#infect()
@@ -94,13 +94,20 @@ cmap w!! w !sudo tee > /dev/null %
 
 set clipboard=unnamed
 
-" This gets jedi to show call signatures when YCM is enabled
-call jedi#configure_call_signatures()
-let g:jedi#show_call_signatures = 1
-let g:jedi#show_call_signatures_delay = 0
-
 let g:jedi#use_splits_not_buffers = "bottom"
-let g:jedi#completions_enabled = 0
+
+" Jedi
+autocmd FileType python setlocal completeopt-=preview
+" fix for neocomplete
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+
+" neocomplete
+" use TAB completion neocomplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplete#enable_at_startup = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " jedi key mappings
 autocmd Filetype python vnoremap <leader>d "_d
@@ -128,19 +135,19 @@ let g:syntastic_python_checkers = ['pyflakes']
 
 " YCM clang key mappings
 "let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_extra_conf_vim_data = ['&filetype']
-autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
-autocmd Filetype c noremap <leader>d :YcmCompleter GoTo<CR>
+"let g:ycm_extra_conf_vim_data = ['&filetype']
+"autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
+"autocmd Filetype c noremap <leader>d :YcmCompleter GoTo<CR>
 
 
 "let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " Have YCM populate the location list with errors
-let g:ycm_always_populate_location_list = 1
+"let g:ycm_always_populate_location_list = 1
 
 " Autoclose preview window
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " Make the undo history persistent
@@ -173,7 +180,7 @@ let g:polyglot_disabled = ['python']
 " bind ctrl-d to fzf tag search in c files
 " see https://github.com/junegunn/fzf.vim/issues/323
 nnoremap <leader>d :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-nnoremap <leader>g :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+nnoremap <leader>l :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 
 " TODO: debug the following:
 "let g:rg_command = '
