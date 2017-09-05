@@ -30,6 +30,9 @@ let g:neomake_python_enabled_makers = ['pyflakes']
 nmap <C-c><C-c> vip:TREPLSendSelection<CR>
 nmap <C-c><C-x> vip:TREPLSendLine<CR>
 
+" escape terminal mode
+:tnoremap <Esc> <C-\><C-n>
+
 " Make window navigation consistent
 :tnoremap <A-h> <C-\><C-n><C-w>h
 :tnoremap <A-j> <C-\><C-n><C-w>j

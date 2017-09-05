@@ -180,7 +180,7 @@ let g:polyglot_disabled = ['python']
 " bind ctrl-d to fzf tag search in c files
 " see https://github.com/junegunn/fzf.vim/issues/323
 nnoremap <leader>d :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-nnoremap <leader>l :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
+nnoremap <leader>L :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 
 " TODO: debug the following:
 "let g:rg_command = '
