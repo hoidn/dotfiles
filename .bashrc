@@ -155,3 +155,10 @@ alias r=ranger
 
 source ~/.shrc
 export PATH="/Users/ohoidn/anaconda2/bin:$PATH"
+
+export AWS_ACCESS_KEY_ID=AKIAINW4HLJMEXRK57XA
+export AWS_SECRET_ACCESS_KEY=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
+export AWS_DEFAULT_REGION=us-east-1
+export REM_USER=ubuntu
+export PEGASUS_HOME=/Users/ohoidn/Dropbox/insight/pegasus
+export PATH=$PEGASUS_HOME:$PATH
