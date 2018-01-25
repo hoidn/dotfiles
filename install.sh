@@ -11,11 +11,13 @@ git config --global alias.tree "log --oneline --decorate --all --graph"
 
 # sudo dnf -y install par the_silver_searcher gcc-c++ clang-devel tmux vim-enhanced
 
+mkdir -p $BASE/bin
 #cd ~/.vim
 git submodule update --init --recursive
 
 # Install fzf
 ~/.fzf/install
+cp .fzf/bin/fzf* ~/bin
 
 bash copyconfig.sh
 

@@ -194,6 +194,8 @@ nnoremap <leader>L :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 "  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)<Paste>
 
 let g:slime_target = "tmux"
+" use the %cpaste function in Python buffers
+let g:slime_python_ipython = 1
 
 set backspace=indent,eol,start " make backspace work over linebreaks, etc.
 

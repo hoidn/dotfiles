@@ -73,3 +73,6 @@
 [submodule "ranger"]
 	path = ranger
 	url = https://github.com/ranger/ranger
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/powerline/fonts.git
