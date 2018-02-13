@@ -18,14 +18,15 @@ PS1='\[\e[0;32m\]\u \h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\
 # -- Improved X11 forwarding through GNU Screen (or tmux).
 # If not in screen or tmux, update the DISPLAY cache.
 # If we are, update the value of DISPLAY to be that in the cache.
-function update-x11-forwarding
-{
-    if [ -z "$STY" -a -z "$TMUX" ]; then
-        echo $DISPLAY > ~/.display.txt
-    else
-        export DISPLAY=`cat ~/.display.txt`
-    fi
-}
+# TODO bash/zsh interoperability issues
+#function update-x11-forwarding
+#{
+#    if [ -z "$STY" -a -z "$TMUX" ]; then
+#        echo $DISPLAY > ~/.display.txt
+#    else
+#        export DISPLAY=`cat ~/.display.txt`
+#    fi
+#}
 
 # This is run before every command.
 preexec() {
@@ -33,7 +34,7 @@ preexec() {
     # Beware!  This fails if PROMPT_COMMAND is a string containing more than one command.
     [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return 
 
-    update-x11-forwarding
+    #update-x11-forwarding
 
     # Debugging.
     #echo DISPLAY = $DISPLAY, display.txt = `cat ~/.display.txt`, STY = $STY, TMUX = $TMUX  
@@ -70,7 +71,6 @@ export HISTFILE=~/.bash_eternal_history
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 bind -x '"\C-o": vim $(fzf);'
 
@@ -155,3 +155,5 @@ alias r=ranger
 
 source ~/.shrc
 export PATH="/Users/ohoidn/anaconda2/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

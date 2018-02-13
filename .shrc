@@ -11,9 +11,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Set default editor
-export EDITOR=nvim
-alias vi=nvim
+#export EDITOR=nvim
+#alias vi=nvim
 
+export EDITOR=vim
+alias vi=vim
 
 # Initialize fasd
 eval "$(fasd --init auto)"

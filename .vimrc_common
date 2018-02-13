@@ -25,7 +25,7 @@ imap <c-s> <Esc>:w<CR>
 
 " multiline edit shortcut
  noremap <leader>n :norm 
- "noremap <leader>i :norm i#<CR>
+ noremap <leader>i :norm i#<CR>
  autocmd Filetype python vmap <leader>c :norm i#<CR>
 
 " Toggle showing invisible characters
@@ -65,6 +65,11 @@ nnoremap <leader>c :History<CR>
 " "nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 nnoremap  <leader>a :Ag<CR>
 
+" Command for git grep
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+
 function! SearchVisualSelectionWithAg() range
 	let old_reg = getreg('"')
 	let old_regtype = getregtype('"')
@@ -87,7 +92,12 @@ function RangerExplorer()
     redraw!
 endfun
 " Enter ranger file manager
-map <Leader>x :call RangerExplorer()<CR>
+nmap <Leader>x :call RangerExplorer()<CR>
+
+"TODO: debug missing fzf#vim#grep
+"let g:NERDTreeHijackNetrw = 0 // add this line if you use NERDTree
+" // open ranger when vim open a directory
+"let g:ranger_replace_netrw = 1
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -113,6 +123,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 autocmd Filetype python vnoremap <leader>d "_d
 autocmd Filetype python vnoremap <leader>p "_dP
 autocmd Filetype python vmap <leader>c :norm i#<CR>
+autocmd Filetype python vmap <leader>x :norm x<CR>
 
 syntax on
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
