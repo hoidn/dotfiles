@@ -54,4 +54,9 @@ fshow() {
 FZF-EOF"
 }
 
+# exclude ipynb files with git grep
+gg() {
+  git grep "$1" -- './*' ':(exclude)*.ipynb'
+}
+
 alias mpc='mplayer -cache 30000'
