@@ -77,3 +77,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/powerline/fonts.git
+[submodule ".vim/bundle/ranger.vim"]
+	path = .vim/bundle/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim.git
