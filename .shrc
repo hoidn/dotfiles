@@ -60,3 +60,4 @@ gg() {
 }
 
 alias mpc='mplayer -cache 30000'
+alias gs='git status'
