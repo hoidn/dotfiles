@@ -62,9 +62,6 @@
 [submodule ".vim/bundle/vim-yankstack"]
 	path = .vim/bundle/vim-yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
-[submodule ".vim/bundle/neocomplete.vim"]
-	path = .vim/bundle/neocomplete.vim
-	url = https://github.com/Shougo/neocomplete.vim.git
 [submodule "neovim"]
 	path = neovim
 	url = https://github.com/neovim/neovim.git
@@ -80,3 +77,6 @@
 [submodule ".vim/bundle/ranger.vim"]
 	path = .vim/bundle/ranger.vim
 	url = https://github.com/francoiscabrol/ranger.vim.git
+[submodule ".vim/bundle/YCM"]
+	path = .vim/bundle/YCM
+	url = https://github.com/Valloric/YouCompleteMe

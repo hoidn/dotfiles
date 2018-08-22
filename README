@@ -1,0 +1,6 @@
+vim install notes:
+On OS X, YouCompleteMe does not support Anaconda python. I've also run
+into versioning issues with Homebrew's python. Instructions in the
+following blog post allowed me to get running with MacVim on OSX:
+
+https://www.aisun.org/2017/10/vim+YouCompleteMe-unavailable/
