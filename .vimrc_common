@@ -22,6 +22,8 @@ map <leader>l :wincmd l<CR>
 " Map ctrl-s to save in normal and insert mode
 nmap <C-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
+map <leader>q :q<CR>
+map <leader>w :w<CR>
 
 " multiline edit shortcut
  noremap <leader>n :norm 
@@ -31,6 +33,7 @@ imap <c-s> <Esc>:w<CR>
 " Toggle showing invisible characters
 "map <leader>s :set list!<CR>
 map <leader>s :split<CR>
+map <leader>v :vsplit<CR>
 
 " Call norm ex command in visual mode
 vmap <leader>n :norm 

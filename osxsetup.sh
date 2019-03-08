@@ -1,1 +1,1 @@
-brew install wget tmux cmake par
+brew install wget tmux cmake par ag
