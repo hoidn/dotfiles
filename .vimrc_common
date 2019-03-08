@@ -29,7 +29,8 @@ imap <c-s> <Esc>:w<CR>
  autocmd Filetype python vmap <leader>c :norm i#<CR>
 
 " Toggle showing invisible characters
-map <leader>s :set list!<CR>
+"map <leader>s :set list!<CR>
+map <leader>s :split<CR>
 
 " Call norm ex command in visual mode
 vmap <leader>n :norm 
@@ -105,6 +106,7 @@ cmap w!! w !sudo tee > /dev/null %
 set clipboard=unnamed
 
 
+" Disable jedi completions in favor of YCM (we still want jedi semantic completions though)
 let g:jedi#completions_enabled = 0
 let g:jedi#use_splits_not_buffers = "bottom"
 
@@ -154,6 +156,7 @@ let g:ycm_server_log_level = 'debug'
 let g:ycm_extra_conf_vim_data = ['&filetype']
 autocmd Filetype cpp noremap <leader>d :YcmCompleter GoTo<CR>
 autocmd Filetype c noremap <leader>d :YcmCompleter GoTo<CR>
+autocmd Filetype python noremap <leader>f :YcmCompleter GoTo<CR>
 
 
 "let g:ycm_confirm_extra_conf = 0
@@ -163,7 +166,7 @@ autocmd Filetype c noremap <leader>d :YcmCompleter GoTo<CR>
 "let g:ycm_always_populate_location_list = 1
 
 " Autoclose preview window
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 0
 
 
 " Make the undo history persistent
@@ -195,7 +198,7 @@ let g:polyglot_disabled = ['python']
 
 " bind ctrl-d to fzf tag search in c files
 " see https://github.com/junegunn/fzf.vim/issues/323
-nnoremap <leader>d :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+" nnoremap <leader>d :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
 nnoremap <leader>L :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 
 " TODO: debug the following:
