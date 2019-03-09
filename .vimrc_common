@@ -1,4 +1,4 @@
-"disables YCM
+" disables YCM
 "let g:loaded_youcompleteme = 1
 set path=$PWD/**
 
@@ -30,6 +30,9 @@ map <leader>w :w<CR>
  noremap <leader>i :norm i#<CR>
  autocmd Filetype python vmap <leader>c :norm i#<CR>
 
+" toggle line number
+ noremap <leader>N :set nu!<CR>
+
 " Toggle showing invisible characters
 "map <leader>s :set list!<CR>
 map <leader>s :split<CR>
@@ -57,7 +60,7 @@ let g:fzf_layout = { 'down': '~40%' }
 nnoremap <silent> <leader>F :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>f :Locate 
-nnoremap <leader>w :Windows<CR>
+" nnoremap <leader>w :Windows<CR>
 " vim command history
 nnoremap <leader>H :History:<CR>
 " recently opened files
