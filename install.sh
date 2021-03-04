@@ -1,4 +1,5 @@
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+sudo zypper install cmake
+
 echo "installed brew"
 bash osxsetup.sh
 echo "ran: "
@@ -13,22 +14,12 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-git config --global alias.tree "log --oneline --decorate --all --graph"
-
-# sudo dnf -y install the_silver_searcher gcc-c++ clang-devel tmux vim-enhanced
-
-mkdir -p $HOME/bin
-#cd ~/.vim
-git submodule update --init --recursive
-
-# Install fzf
-yes | ~/.fzf/install
-cp .fzf/bin/fzf-tmux ~/bin/
-cp .fzf/bin/fzf ~/bin/
-echo "installed fzf"
+bash gconfig.sh
 
 bash copyconfig.sh
 echo "copied configs"
+
+bash fzf.sh
 
 # Install ranger if necessary
 cd ranger
@@ -59,23 +50,17 @@ cd ~/.vim/bundle/YCM
 ./install.py --clang-completer
 echo "installed YCM"
 
-# Install fasd
-cd ~/.clvv-fasd-4822024
-PREFIX=$HOME make install
-echo "installed fasd"
+bash fasd.sh
 
-# Install Rust
-if ! command_exists cargo ; then
-	cd $BASE
-	bash rustinstall.sh
-fi
-echo "installed rust"
-
-# Install ripgrep
-if ! command_exists rg ; then
-	cargo install ripgrep
-fi
-echo "installed ripgrep"
-
-
-
+## Install Rust
+#if ! command_exists cargo ; then
+#	cd $BASE
+#	bash rustinstall.sh
+#fi
+#echo "installed rust"
+#
+## Install ripgrep
+#if ! command_exists rg ; then
+#	cargo install ripgrep
+#fi
+#echo "installed ripgrep"

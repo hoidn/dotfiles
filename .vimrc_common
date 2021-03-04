@@ -133,7 +133,7 @@ let g:jedi#use_splits_not_buffers = "bottom"
 autocmd Filetype python vnoremap <leader>d "_d
 autocmd Filetype python vnoremap <leader>p "_dP
 autocmd Filetype rc vmap <leader>c :norm i"<CR>
-autocmd Filetype python vmap <leader>x :norm x<CR>
+vmap <leader>x :norm x<CR>
 
 syntax on
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
