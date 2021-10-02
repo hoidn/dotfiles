@@ -1,5 +1,6 @@
 sudo zypper install cmake
 
+bash basictools.sh
 echo "installed brew"
 bash osxsetup.sh
 echo "ran: "
@@ -26,6 +27,7 @@ cd ranger
 python setup.py install --optimize=1 --record=install_log.txt --user
 echo "installed ranger"
 
+git config --global alias.tree "log --oneline --decorate --all --graph"
 git config --global core.excludesfile '~/.gitignore'
 
 
@@ -39,18 +41,11 @@ if ! command_exists python$PYTHON_VER ; then
 fi
 
 
-# Make directory for vim undo history
-mkdir -p $HOME/.vimundo
-mkdir -p $HOME/.local/bin
-
-
 
 # Install YCM
 cd ~/.vim/bundle/YCM
 ./install.py --clang-completer
 echo "installed YCM"
-
-bash fasd.sh
 
 ## Install Rust
 #if ! command_exists cargo ; then
