@@ -1,5 +1,3 @@
-sudo zypper install cmake
-
 bash basictools.sh
 echo "installed brew"
 bash osxsetup.sh
