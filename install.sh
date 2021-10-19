@@ -19,10 +19,6 @@ git config --global alias.tree "log --oneline --decorate --all --graph"
 # sudo dnf -y install the_silver_searcher gcc-c++ clang-devel tmux vim-enhanced
 
 
-## Install ranger if necessary
-#cd ranger
-#python setup.py install --optimize=1 --record=install_log.txt --user
-#echo "installed ranger"
 
 git config --global core.excludesfile '~/.gitignore'
 
