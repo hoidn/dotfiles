@@ -21,6 +21,7 @@ alias vi=vim
 eval "$(fasd --init auto)"
 
 # with fasd (from examples page in the fzf repo)
+# see https://github.com/junegunn/fzf/wiki/examples#v
 v() {
   local file
   file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && $EDITOR "${file}" || return 1
