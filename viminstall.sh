@@ -3,7 +3,7 @@
 
 # TODO: steer this from the main install script
 # TODO: distro-dependent build dependencies for lua
-PYTHON_CONFIG=$HOME/anaconda2/lib/python2.7/config
+PYTHON_CONFIG=$HOME/anaconda3/lib/python3.8/config
 VIMDIR=$HOME
 #VIMDIR=$HOME/.local/usr/share/vim/vim80/
 

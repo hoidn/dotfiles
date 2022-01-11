@@ -1,5 +1,4 @@
 bash basictools.sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "installed brew"
 bash osxsetup.sh
 echo "ran: "
@@ -14,12 +13,14 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
+bash gconfig.sh
+
+bash copyconfig.sh
+echo "copied configs"
+
+bash fzf.sh
+
 git config --global alias.tree "log --oneline --decorate --all --graph"
-
-# sudo dnf -y install the_silver_searcher gcc-c++ clang-devel tmux vim-enhanced
-
-
-
 git config --global core.excludesfile '~/.gitignore'
 
 
@@ -51,6 +52,3 @@ echo "installed YCM"
 #	cargo install ripgrep
 #fi
 #echo "installed ripgrep"
-
-
-
