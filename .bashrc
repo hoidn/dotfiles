@@ -1,160 +1,116 @@
-# .bashrc
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. ~/.profile
-	. /etc/bashrc
-fi
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
-# User specific aliases and functions
-
-export GPU_MAX_ALLOC_PERCENT=100
-
-
-PS1='\[\e[0;32m\]\u \h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
-# -- Improved X11 forwarding through GNU Screen (or tmux).
-# If not in screen or tmux, update the DISPLAY cache.
-# If we are, update the value of DISPLAY to be that in the cache.
-# TODO bash/zsh interoperability issues
-#function update-x11-forwarding
-#{
-#    if [ -z "$STY" -a -z "$TMUX" ]; then
-#        echo $DISPLAY > ~/.display.txt
-#    else
-#        export DISPLAY=`cat ~/.display.txt`
-#    fi
-#}
-
-# This is run before every command.
-preexec() {
-    # Don't cause a preexec for PROMPT_COMMAND.
-    # Beware!  This fails if PROMPT_COMMAND is a string containing more than one command.
-    [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return 
-
-    #update-x11-forwarding
-
-    # Debugging.
-    #echo DISPLAY = $DISPLAY, display.txt = `cat ~/.display.txt`, STY = $STY, TMUX = $TMUX  
-}
-trap 'preexec' DEBUG
-
-
-
-#_fasd_bash_hook_cmd_complete v m j o
-
-## Set up custom fasd aliases
-#alias fv='fasd -e vim' # quick opening files with vim
-#alias sv='fasd -sie vim' # quick opening files with vim
-
-# Collect and immediately reload commands from all shells into bash history:
-# Avoid duplicates
-export HISTCONTROL=ignoredups:erasedups
-# When the shell exits, append to the history file instead of overwriting it
+# append to the history file, don't overwrite it
 shopt -s histappend
 
-# http://stackoverflow.com/questions/9457233/unlimited-bash-history
-# Eternal bash history.
-# ---------------------
-# Undocumented feature which sets the size to "unlimited".
-# http://stackoverflow.com/questions/9457233/unlimited-bash-history
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
-# Change the file location because certain bash sessions truncate .bash_history file upon close.
-# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
-export HISTFILE=~/.bash_eternal_history
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
-# After each command, append to the history file and reread it
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
 
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-bind -x '"\C-o": vim $(fzf);'
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 
-# open in vim with fzf search on results from locate and find. Defaults to searching local directory.
-vf() {
-	local dir
-	local filze
-	if [ -z "$1" ]
-	then
-		dir=$PWD
-	else
-		dir=$1
-	fi
-	file="$({ locate $dir & find $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && $EDITOR "${file}" || return 1
-}
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
 
-# open in vim with fzf search on results from locate and find. Defaults to searching local directory.
-lf() {
-	local dir
-	local filze
-	if [ -z "$1" ]
-	then
-		dir=$PWD
-	else
-		dir=$1
-	fi
-	file="$({ locate $dir & find . -regex $dir & } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "vi ${file}" && $EDITOR "${file}" || return 1
-}
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+force_color_prompt=yes
 
-# open with xdg-open based on results from locate and find. Defaults to searching local directory.
-xo() {
-	local dir
-	local file
-	if [ -z "$1" ]
-	then
-		dir=$PWD
-	else
-		dir=$1
-	fi
-	file="$({ locate $dir & find $dir &  } 2>/dev/null | uniq | fzf -1 -0 --no-sort +m)" && history -s "xdg-open ${file}" && xdg-open "${file}" || return 1
-	echo $dir
-}
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
 
-# open with xdg-open based on results from locate. Defaults to searching local directory.
-lf() {
-	local dir
-	local file
-	if [ -z "$1" ]
-	then
-		dir=$PWD
-	else
-		dir=$1
-	fi
-	file="$( locate $dir  2>/dev/null | fzf -1 -0 --no-sort +m)" && history -s || return 1
-	echo $file
-}
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
 
-# utility function used to write the command in the shell
-writecmd() {
-  perl -e '$TIOCSTI = 0x5412; $l = <STDIN>; $lc = $ARGV[0] eq "-run" ? "\n" : ""; $l =~ s/\s*$/$lc/; map { ioctl STDOUT, $TIOCSTI, $_; } split "", $l;' -- $1
-}
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
 
-# fh - repeat history
-fh() {
-  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd -run
-}
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
-# fhe - repeat history edit
-fhe() {
-  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd
-}
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 
-#eval "$(ssh-agent -s)"
-#ssh-add ~/.ssh/id_rsa
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-alias l='locate $PWD | fzf'
-alias r=ranger
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
 
-# problematic for non-interactive sessions?
-#bind -r '\C-s'
-#stty -ixon
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-source ~/.shrc
-export PATH="/Users/ohoidn/anaconda2/bin:$PATH"
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -202,3 +158,4 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # JINA_CLI_END
 
+source ~/.shrc

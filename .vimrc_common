@@ -113,8 +113,9 @@ set clipboard=unnamed
 
 
 " Disable jedi completions in favor of YCM (we still want jedi semantic completions though)
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 1
 let g:jedi#use_splits_not_buffers = "bottom"
+let g:pymode_rope = 0
 
 " Jedi
 "autocmd FileType python setlocal completeopt-=preview
