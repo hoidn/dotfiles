@@ -80,3 +80,6 @@
 [submodule ".vim/bundle/YCM"]
 	path = .vim/bundle/YCM
 	url = https://github.com/Valloric/YouCompleteMe
+[submodule ".vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode
