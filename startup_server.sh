@@ -12,3 +12,6 @@ tmux send-keys -t autossh4 "autossh -M 20008 -R 47.147.134.169:51006:localhost:5
 
 tmux new-session -d -s autossh5 'bash -l'
 tmux send-keys -t autossh5 "autossh -M 20009 -R 47.147.134.169:32401:localhost:8096 pi@47.147.134.169" ENTER
+
+#ssh -L 3049:localhost:2049 pi@47.147.134.169
+#sudo mount -t nfs -o port=3049 localhost:/media/pi/ff9e1ec0-72b7-4574-b12d-66f4a792d1fb/nfs /mnt/nfs-share
