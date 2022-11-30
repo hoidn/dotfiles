@@ -14,9 +14,11 @@ files=".bashrc .vimrc .vimrc_common .inputrc .vim .clvv-fasd-4822024 .fzf .confi
 ##########
 
 # TODO need to run something like this for vim-fugitive to work:
+# sudo su
 # wget https://bootstrap.pypa.io/get-pip.py
 # python3 get-pip.py
 # pip install fugitive
+# exit
 
 mkdir -p ~/bin
 
