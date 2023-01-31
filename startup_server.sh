@@ -23,5 +23,8 @@ tmux send-keys -t autossh9 "autossh -M 20011 -R 47.147.134.169:8889:localhost:88
 # from https://gist.github.com/proudlygeek/5721498
 tmux new-session -d -s autossh8 'bash -l'
 tmux send-keys -t autossh8 "autossh -M 20012 -L 3049:localhost:2049 pi@47.147.134.169" ENTER
+
+tmux new-session -d -s autossh10 'bash -l'
+tmux send-keys -t autossh10 "autossh -M 20012 -R 47.147.134.169:8890:localhost:8890 pi@47.147.134.169" ENTER
 #ssh -L 3049:localhost:2049 pi@47.147.134.169
 #sudo mount -t nfs -o port=3049 localhost:/media/pi/ff9e1ec0-72b7-4574-b12d-66f4a792d1fb/nfs /mnt/nfs-share
