@@ -16,7 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+export HISTSIZE=10000
 HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
@@ -157,17 +157,5 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 # default workspace for Executors
 
 # JINA_CLI_END
-
-
-
-
-
-
-
-
-
-
-
-
 
 source ~/.shrc
