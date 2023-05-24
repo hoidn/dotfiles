@@ -1,4 +1,5 @@
-proxy_ip="47.147.134.202"
+#proxy_ip="47.147.134.202"
+proxy_ip="192.168.4.29"
 
 sudo mount /dev/sda1 /media/
 tmux new-session -d -s autossh1 'bash -l'

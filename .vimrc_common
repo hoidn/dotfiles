@@ -19,6 +19,7 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
+
 " Map ctrl-s to save in normal and insert mode
 nmap <C-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
@@ -113,7 +114,7 @@ let g:pymode_rope = 0
 
 " jedi key mappings
 autocmd Filetype python vnoremap <leader>d "_d
-autocmd Filetype python vnoremap <leader>p "_dP
+"autocmd Filetype python vnoremap <leader>p "_dP
 autocmd Filetype rc vmap <leader>c :norm i"<CR>
 vmap <leader>x :norm x<CR>
 
@@ -234,3 +235,7 @@ colo seoul256
 
 " Switch
 set background=dark
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap L :m '<-2<CR>gv=gv
+vnoremap <leader>p "_dP
