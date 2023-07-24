@@ -1,3 +1,5 @@
+let g:python3_host_prog = '/home/ollie/anaconda3/envs/tf/bin/python3'
+
 " disables YCM
 "let g:loaded_youcompleteme = 1
 set path=$PWD/**
@@ -70,7 +72,7 @@ function! SearchVisualSelectionWithAg() range
 	let &clipboard = old_clipboard
 	execute 'Ag' selection
 endfunction
-vnoremap  K :call SearchVisualSelectionWithAg()<CR>
+"vnoremap  K :call SearchVisualSelectionWithAg()<CR>
 
 function RangerExplorer()
     exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
@@ -237,5 +239,6 @@ colo seoul256
 set background=dark
 
 vnoremap J :m '>+1<CR>gv=gv
-vnoremap L :m '<-2<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 vnoremap <leader>p "_dP
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
