@@ -1,8 +1,8 @@
 bash basictools.sh
-echo "installed brew"
-bash osxsetup.sh
-echo "ran: "
-cat osxsetup.sh
+#echo "installed brew"
+#bash osxsetup.sh
+#echo "ran: "
+#cat osxsetup.sh
 
 #!/bin/bash
 #Install various software
@@ -18,21 +18,23 @@ bash gconfig.sh
 bash copyconfig.sh
 echo "copied configs"
 
-bash fzf.sh
+# Install ranger if necessary
+cd ranger
+python setup.py install --optimize=1 --record=install_log.txt --user
+echo "installed ranger"
 
 git config --global alias.tree "log --oneline --decorate --all --graph"
 git config --global core.excludesfile '~/.gitignore'
 
 
-# download and install anaconda
-# TODO: necessary with vim-enhanced?
-if ! command_exists python$PYTHON_VER ; then
-	echo "no python found; installing Anaconda python"
-	wget https://repo.continuum.io/archive/Anaconda$ANACONDA_VER-Linux-x86_64.sh
-	bash Anaconda$ANACONDA_VER-Linux-x86_64.sh -b -p $ANACONDA_DIR
-	export PATH="$ANACONDA_DIR:$PATH"
-fi
-
+## download and install anaconda
+## TODO: necessary with vim-enhanced?
+#if ! command_exists python$PYTHON_VER ; then
+#	echo "no python found; installing Anaconda python"
+#	wget https://repo.continuum.io/archive/Anaconda$ANACONDA_VER-Linux-x86_64.sh
+#	bash Anaconda$ANACONDA_VER-Linux-x86_64.sh -b -p $ANACONDA_DIR
+#	export PATH="$ANACONDA_DIR:$PATH"
+#fi
 
 
 # Install YCM

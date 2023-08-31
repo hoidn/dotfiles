@@ -1,4 +1,5 @@
 # Install fasd
-cd ~/.clvv-fasd-4822024
+pip install pandoc
+cd fasd/
 PREFIX=$HOME make install
 echo "installed fasd"

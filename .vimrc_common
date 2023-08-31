@@ -1,3 +1,5 @@
+let g:python3_host_prog = '/home/ollie/anaconda3/envs/tf/bin/python3'
+
 " disables YCM
 "let g:loaded_youcompleteme = 1
 set path=$PWD/**
@@ -19,6 +21,7 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
+
 " Map ctrl-s to save in normal and insert mode
 nmap <C-s> :w<CR>
 imap <c-s> <Esc>:w<CR>
@@ -35,7 +38,7 @@ map <leader>w :w<CR>
 
 " Toggle showing invisible characters
 "map <leader>s :set list!<CR>
-map <leader>s :split<CR>
+map <leader>e :split<CR>
 map <leader>v :vsplit<CR>
 
 " Call norm ex command in visual mode
@@ -52,25 +55,6 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-" Default fzf layout
-" - down / up / left / right
-" - window (nvim only)
-let g:fzf_layout = { 'down': '~40%' }
-
-nnoremap <silent> <leader>F :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <leader>f :Locate 
-" nnoremap <leader>w :Windows<CR>
-" vim command history
-nnoremap <leader>H :History:<CR>
-" recently opened files
-nnoremap <leader>c :History<CR>
-" "nnoremap <silent> <leader>; :BLines<CR>
-" "nnoremap <silent> <leader>o :BTags<CR>
-" "nnoremap <silent> <leader>O :Tags<CR>
-" "nnoremap <silent> <leader>? :History<CR>
-" "nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-nnoremap  <leader>a :Ag<CR>
 
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -88,7 +72,7 @@ function! SearchVisualSelectionWithAg() range
 	let &clipboard = old_clipboard
 	execute 'Ag' selection
 endfunction
-vnoremap  K :call SearchVisualSelectionWithAg()<CR>
+"vnoremap  K :call SearchVisualSelectionWithAg()<CR>
 
 function RangerExplorer()
     exec "silent !ranger --choosefile=/tmp/vim_ranger_current_file " . expand("%:p:h")
@@ -113,8 +97,9 @@ set clipboard=unnamed
 
 
 " Disable jedi completions in favor of YCM (we still want jedi semantic completions though)
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 1
 let g:jedi#use_splits_not_buffers = "bottom"
+let g:pymode_rope = 0
 
 " Jedi
 "autocmd FileType python setlocal completeopt-=preview
@@ -131,7 +116,7 @@ let g:jedi#use_splits_not_buffers = "bottom"
 
 " jedi key mappings
 autocmd Filetype python vnoremap <leader>d "_d
-autocmd Filetype python vnoremap <leader>p "_dP
+"autocmd Filetype python vnoremap <leader>p "_dP
 autocmd Filetype rc vmap <leader>c :norm i"<CR>
 vmap <leader>x :norm x<CR>
 
@@ -221,6 +206,26 @@ nnoremap <leader>L :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 "command! -bang -nargs=* GGrep
 "  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)<Paste>
 
+" Default fzf layout
+" - down / up / left / right
+" - window (nvim only)
+let g:fzf_layout = { 'down': '~40%' }
+
+nnoremap <silent> <leader>F :Files<CR>
+nnoremap <silent> <leader>u :Buffers<CR>
+nnoremap <leader>f :Locate 
+" nnoremap <leader>w :Windows<CR>
+" vim command history
+nnoremap <leader>H :History:<CR>
+" recently opened files
+nnoremap <leader>c :History<CR>
+" "nnoremap <silent> <leader>; :BLines<CR>
+" "nnoremap <silent> <leader>o :BTags<CR>
+" "nnoremap <silent> <leader>O :Tags<CR>
+" "nnoremap <silent> <leader>? :History<CR>
+" "nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap  <leader>a :Ag<CR>
+
 let g:slime_target = "tmux"
 " use the %cpaste function in Python buffers
 let g:slime_python_ipython = 1
@@ -235,3 +240,8 @@ colo seoul256
 
 " Switch
 set background=dark
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap <leader>p "_dP
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>

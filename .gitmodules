@@ -18,7 +18,7 @@
 	url = https://github.com/rdnetto/YCM-Generator.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -80,6 +80,12 @@
 [submodule ".vim/bundle/YCM"]
 	path = .vim/bundle/YCM
 	url = https://github.com/Valloric/YouCompleteMe
-[submodule ".vim/bundle/vim-flake8"]
-	path = .vim/bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8.git
+[submodule ".vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode
+[submodule ".vim/bundle/vim-chatgpt"]
+	path = .vim/bundle/vim-chatgpt
+	url = https://github.com/CoderCookE/vim-chatgpt.git
+[submodule "fasd"]
+	path = fasd
+	url = https://github.com/clvv/fasd.git

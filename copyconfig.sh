@@ -9,9 +9,16 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".bashrc .vimrc .vimrc_common .inputrc .vim .clvv-fasd-4822024 .fzf .config/ranger .config/nvim .spacemacs .emacs.d .profile .zshrc .shrc"
+files=".bashrc .bash_profile .vimrc .vimrc_common .inputrc .vim .clvv-fasd-4822024 .fzf .config/ranger .config/nvim .spacemacs .emacs.d .profile .zshrc .shrc"
 
 ##########
+
+# TODO need to run something like this for vim-fugitive to work:
+# sudo su
+# wget https://bootstrap.pypa.io/get-pip.py
+# python3 get-pip.py
+# pip install fugitive
+# exit
 
 mkdir -p ~/bin
 
