@@ -1,4 +1,0 @@
-dir=~/dotfiles
-ANACONDA_VER='3-4.1.1'
-ANACONDA_DIR=$HOME/anaconda3
-PYTHON_VER=3
