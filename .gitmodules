@@ -86,3 +86,6 @@
 [submodule ".vim/bundle/vim-chatgpt"]
 	path = .vim/bundle/vim-chatgpt
 	url = https://github.com/CoderCookE/vim-chatgpt.git
+[submodule "fasd"]
+	path = fasd
+	url = https://github.com/clvv/fasd.git
