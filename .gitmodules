@@ -18,7 +18,7 @@
 	url = https://github.com/rdnetto/YCM-Generator.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -86,9 +86,6 @@
 [submodule ".vim/bundle/vim-chatgpt"]
 	path = .vim/bundle/vim-chatgpt
 	url = https://github.com/CoderCookE/vim-chatgpt.git
-[submodule ".config/nvim/bundle/CodeGPT.nvim"]
-	path = .config/nvim/bundle/CodeGPT.nvim
-	url = https://github.com/dpayne/CodeGPT.nvim.git
-[submodule ".config/nvim/vim-plug"]
-	path = .config/nvim/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
+[submodule "fasd"]
+	path = fasd
+	url = https://github.com/clvv/fasd.git

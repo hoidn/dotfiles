@@ -9,7 +9,10 @@ bash basictools.sh
 #!/bin/bash
 #Install various software
 BASE=`pwd`
-source env.sh
+
+dir=~/dotfiles
+ANACONDA_DIR=$HOME/anaconda3
+PYTHON_VER=3
 
 command_exists () {
     type "$1" &> /dev/null ;
