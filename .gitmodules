@@ -86,3 +86,9 @@
 [submodule ".vim/bundle/vim-chatgpt"]
 	path = .vim/bundle/vim-chatgpt
 	url = https://github.com/CoderCookE/vim-chatgpt.git
+[submodule ".config/nvim/bundle/CodeGPT.nvim"]
+	path = .config/nvim/bundle/CodeGPT.nvim
+	url = https://github.com/dpayne/CodeGPT.nvim.git
+[submodule ".config/nvim/vim-plug"]
+	path = .config/nvim/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
