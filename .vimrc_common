@@ -30,6 +30,8 @@ map <leader>w :w<CR>
  noremap <leader>i :norm i#<CR>
  autocmd Filetype python vmap <leader>c :norm i#<CR>
 
+noremap <leader>o :Autoformat<CR>
+
 " toggle line number
  noremap <leader>N :set nu!<CR>
 
@@ -57,12 +59,12 @@ let g:fzf_action = {
 " - window (nvim only)
 let g:fzf_layout = { 'down': '~40%' }
 
-nnoremap <silent> <leader>F :Files<CR>
+nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>f :Locate 
 " nnoremap <leader>w :Windows<CR>
 " vim command history
-nnoremap <leader>H :History:<CR>
+nnoremap <leader>a :History:<CR>
 " recently opened files
 nnoremap <leader>c :History<CR>
 " "nnoremap <silent> <leader>; :BLines<CR>
@@ -70,7 +72,7 @@ nnoremap <leader>c :History<CR>
 " "nnoremap <silent> <leader>O :Tags<CR>
 " "nnoremap <silent> <leader>? :History<CR>
 " "nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-nnoremap  <leader>a :Ag<CR>
+"nnoremap  <leader>a :Ag<CR>
 
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -235,3 +237,5 @@ colo seoul256
 
 " Switch
 set background=dark
+
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>

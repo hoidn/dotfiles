@@ -3,7 +3,7 @@
 
 # TODO: steer this from the main install script
 # TODO: distro-dependent build dependencies for lua
-PYTHON_CONFIG=$HOME/anaconda3/lib/python3.8/config
+PYTHON_CONFIG=$HOME/anaconda3/lib/python3.7/config
 VIMDIR=$HOME
 #VIMDIR=$HOME/.local/usr/share/vim/vim80/
 
@@ -18,7 +18,7 @@ CFLAGS+="-O -fPIC -Wformat" ./configure \  --with-features=huge \
             --prefix=$VIMDIR \
             --enable-multibyte \
             --enable-rubyinterp=yes \
-            --enable-pythoninterp=yes \
+            --enable-python3interp=yes \
             --with-python-config-dir=$PYTHON_CONFIG \
             --enable-luainterp=yes \
             --enable-luajit=yes \
