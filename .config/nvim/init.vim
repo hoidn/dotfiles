@@ -8,8 +8,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'dpayne/CodeGPT.nvim'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neomake/neomake'
 
-
+tnoremap jk <C-\><C-n>
 
 " You can revert the settings after the call like so:
 "   filetype indent off   " Disable file-type-specific indentation
@@ -62,7 +63,6 @@ let g:magma_image_provider = "ueberzug"
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'davidhalter/jedi-vim'
 "Plug 'airblade/vim-gitgutter'
-"Plug 'neomake/neomake'
 "Plug 'ervandew/supertab'
 "Plug 'sheerun/vim-polyglot'
 "
