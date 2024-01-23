@@ -1,55 +1,63 @@
--- init.lua
--- Neovim configuration file written in Lua
+-- This is a Lua translation of the .vimrc_common file
 
--- Set Python3 provider
 vim.g.python3_host_prog = '/home/ollie/anaconda3/envs/tf/bin/python3'
 
--- Key mappings
-vim.api.nvim_set_keymap('n', '<leader>h', ':wincmd h<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>j', ':wincmd j<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>N', ':set nu!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>e', ':split<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>v', ':vsplit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>/', ':nohlsearch<CR>', { noremap = true })
+-- disables YCM
+-- vim.g.loaded_youcompleteme = 1
+vim.opt.path = vim.fn.getcwd() .. "/**"
 
--- Python-specific settings
-vim.cmd([[
-  autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
-  autocmd Filetype python vnoremap <leader>d "_d
-]])
+vim.cmd('call pathogen#infect()')
 
--- Persistent undo
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand('~/.vimundo')
+-- Shared rc file for vim and neovim.
 
--- Syntax highlighting
-vim.cmd('syntax on')
+vim.g.mapleader = " "
 
--- Clipboard settings
-vim.opt.clipboard = 'unnamed'
+-- map , to toggle fold
+vim.api.nvim_set_keymap('n', ',', 'za', {})
 
--- Jedi settings
-vim.g.jedi_completions_enabled = 1
-vim.g.jedi_use_splits_not_buffers = 'bottom'
-vim.g.pymode_rope = 0
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {})
+-- Match default binding in Spacemacs
+vim.api.nvim_set_keymap('i', 'fd', '<Esc>', {})
+vim.api.nvim_set_keymap('', '<leader>h', ':wincmd h<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>j', ':wincmd j<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>k', ':wincmd k<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>l', ':wincmd l<CR>', {})
 
--- Syntastic settings
-vim.g.syntastic_always_populate_loc_list = 1
-vim.g.syntastic_mode_map = { mode = 'passive', active_filetypes = { 'python' } }
-vim.g.syntastic_python_checkers = { 'pyflakes' }
+-- Map ctrl-s to save in normal and insert mode
+vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {})
+vim.api.nvim_set_keymap('i', '<c-s>', '<Esc>:w<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>q', ':q<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>w', ':w<CR>', {})
 
--- YCM settings
-vim.g.ycm_server_keep_logfiles = 1
-vim.g.ycm_server_log_level = 'debug'
-vim.g.ycm_autoclose_preview_window_after_insertion = 0
-vim.api.nvim_set_keymap('n', '<leader>f', ':YcmCompleter GoTo<CR>', { noremap = true })
+-- multiline edit shortcut
+vim.api.nvim_set_keymap('n', '<leader>n', ':norm ', {})
+vim.api.nvim_set_keymap('n', '<leader>i', ':norm i#<CR>', {})
+vim.cmd('autocmd Filetype python vmap <leader>c :norm i#<CR>')
 
--- Color scheme
-vim.cmd('colo seoul256')
-vim.opt.background = 'dark'
+-- toggle line number
+vim.api.nvim_set_keymap('n', '<leader>N', ':set nu!<CR>', {})
+
+-- Toggle showing invisible characters
+-- vim.api.nvim_set_keymap('', '<leader>s', ':set list!<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>e', ':split<CR>', {})
+vim.api.nvim_set_keymap('', '<leader>v', ':vsplit<CR>', {})
+
+-- Call norm ex command in visual mode
+vim.api.nvim_set_keymap('v', '<leader>n', ':norm ', {})
+
+-- un-highlight search results
+vim.api.nvim_set_keymap('n', '<leader>/', ':nohlsearch<CR>', {})
+
+vim.api.nvim_set_keymap('', ']<leader>', ':lnext<CR>', {})
+vim.api.nvim_set_keymap('', '[<leader>', ':lprevious<CR>', {})
+
+vim.g.fzf_action = {
+  ['ctrl-t'] = 'tab split',
+  ['ctrl-x'] = 'split',
+  ['ctrl-v'] = 'vsplit' }
+
+-- Command for git grep
+-- - fzf#vim#grep(command, with_column, [options], [fullscreen])
+vim.cmd('command! -bang -nargs=* GGrep call fzf#vim#grep(\'git grep --line-number \'.shellescape(<q-args>), 0, <bang>0)')
+
+-- TODO: translate the rest of the file
