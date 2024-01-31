@@ -89,3 +89,9 @@
 [submodule "fasd"]
 	path = fasd
 	url = https://github.com/clvv/fasd.git
+[submodule ".config/nvim/lua/lazy.nvim"]
+	path = .config/nvim/lua/lazy.nvim
+	url = https://github.com/folke/lazy.nvim.git
+[submodule ".vim/autoload/plug.vim"]
+	path = .vim/autoload/plug.vim
+	url = git@github.com:junegunn/vim-plug.git

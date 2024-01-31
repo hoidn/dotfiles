@@ -17,7 +17,22 @@
 --    use 'junegunn/fzf.vim'
 --    -- Additional plugins can be added here
 --end)
---
+
+vim.cmd [[
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'dpayne/CodeGPT.nvim'
+Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neomake/neomake'
+
+call plug#end()
+]]
+
+
 -- Set the path to include the current working directory
 vim.opt.path:append('**')
 
@@ -114,6 +129,10 @@ vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>', {noremap = true})
 
+-- Multiline edit shortcuts
+vim.api.nvim_set_keymap('v', '<leader>n', ':norm ', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>i', ':norm i#<CR>', { noremap = true, silent = true })
+
 -- Map leader key with 'q' to quit and 'w' to save
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', {noremap = true})
@@ -153,6 +172,23 @@ vim.api.nvim_set_keymap('n', '<leader>c', ':History<CR>', {noremap = true, silen
 -- Map leader key with 'a' to search text using Ag
 vim.api.nvim_set_keymap('n', '<leader>a', ':Ag<CR>', {noremap = true, silent = true})
 -- Plugin settings for Neovim
+
+local has_xsel = vim.fn.executable("xsel") == 1
+
+if has_xsel then
+  vim.g.clipboard = {
+    name = "xsel",
+    copy = {
+      ["+"] = "xsel --input --clipboard",
+      ["*"] = "xsel --input --primary",
+    },
+    paste = {
+      ["+"] = "xsel --output --clipboard",
+      ["*"] = "xsel --output --primary",
+    },
+    cache_enabled = 0,
+  }
+end
 
 -- Python host program
 vim.g.python3_host_prog = '/home/ollie/anaconda3/envs/tf/bin/python3'
@@ -304,4 +340,5 @@ vim.api.nvim_create_autocmd('TermOpen', {
     pattern = 'term://*',
     callback = set_terminal_background
 })
+
 
