@@ -95,3 +95,6 @@
 [submodule ".vim/autoload/plug.vim"]
 	path = .vim/autoload/plug.vim
 	url = git@github.com:junegunn/vim-plug.git
+[submodule ".vim/bundle/leap.nvim"]
+	path = .vim/bundle/leap.nvim
+	url = git@github.com:ggandor/leap.nvim.git

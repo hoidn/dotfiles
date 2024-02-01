@@ -28,10 +28,14 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'dpayne/CodeGPT.nvim'
 Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
+Plug 'ggandor/leap.nvim'
+autocmd! VimEnter * lua require('leap').set_default_keymaps()
+
 
 call plug#end()
 ]]
 
+--require('leap.nvim').create_default_mappings()
 
 -- Set the path to include the current working directory
 vim.opt.path:append('**')
