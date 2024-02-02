@@ -1,23 +1,3 @@
---return require('packer').startup(function()
---    use 'nvim-lua/plenary.nvim'
---    use 'MunifTanjim/nui.nvim'
---    use 'dpayne/CodeGPT.nvim'
---    use {'dccsillag/magma-nvim', run = ':UpdateRemotePlugins'}
---    use 'neomake/neomake'
---    use 'kassio/neoterm'
---    use {'rdnetto/YCM-Generator', branch = 'stable'}
---    use 'tpope/vim-fugitive'
---    use 'tpope/vim-surround'
---    use 'Valloric/YouCompleteMe'
---    use 'davidhalter/jedi-vim'
---    use 'airblade/vim-gitgutter'
---    use 'ervandew/supertab'
---    use 'sheerun/vim-polyglot'
---    use 'junegunn/fzf'
---    use 'junegunn/fzf.vim'
---    -- Additional plugins can be added here
---end)
-
 vim.cmd [[
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -34,8 +14,6 @@ autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
 call plug#end()
 ]]
-
---require('leap.nvim').create_default_mappings()
 
 -- Set the path to include the current working directory
 vim.opt.path:append('**')
@@ -334,15 +312,15 @@ vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', {noremap = true})
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', {noremap = true})
 
 
--- Function to set terminal background color
-local function set_terminal_background()
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'black' })
-end
-
--- Autocommand to change background color in terminal buffers
-vim.api.nvim_create_autocmd('TermOpen', {
-    pattern = 'term://*',
-    callback = set_terminal_background
-})
-
-
+---- Function to set terminal background color
+--local function set_terminal_background()
+--    vim.api.nvim_set_hl(0, 'Normal', { bg = 'black' })
+--end
+--
+---- Autocommand to change background color in terminal buffers
+--vim.api.nvim_create_autocmd('TermOpen', {
+--    pattern = 'term://*',
+--    callback = set_terminal_background
+--})
+--
+--
