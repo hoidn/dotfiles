@@ -13,6 +13,7 @@ Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'ggandor/leap.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'tpope/vim-fugitive'
 
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/nvim-cmp'
@@ -262,6 +263,8 @@ vnoremap K :m '<-2<CR>gv=gv
 "vnoremap <leader>p "_dP
 nnoremap <leader>p :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 ]]
+
+vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
 
 require'lspconfig'.pyright.setup{}
 
