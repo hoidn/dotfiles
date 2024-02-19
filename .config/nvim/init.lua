@@ -23,6 +23,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 "Plug 'hrsh7th/cmp-vsnip' -- For snippet support
 "Plug 'hrsh7th/vim-vsnip' -- Snippet engine
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -297,5 +298,14 @@ require('lspconfig')['pyright'].setup {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
 }
 
+function search_custom_dir()
+  local input_dir = vim.fn.input("Enter directory: ", "", "file")
+  require'telescope.builtin'.find_files({ cwd = input_dir })
+end
 
-
+vim.api.nvim_set_keymap('n', '<Leader>fd', '<cmd>lua search_custom_dir()<CR>', { noremap = true, silent = true })
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
