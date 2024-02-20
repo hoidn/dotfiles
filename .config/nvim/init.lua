@@ -267,7 +267,11 @@ nnoremap <leader>p :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
 
+-- lsp configuration and lsp keybindings
 require'lspconfig'.pyright.setup{}
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'gb', '<cmd>split<CR><cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true, silent=true})
+
 
 local cmp = require'cmp'
 
