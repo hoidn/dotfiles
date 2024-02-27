@@ -166,3 +166,4 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(/bin/brew shellenv)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "$HOME/.cargo/env"
