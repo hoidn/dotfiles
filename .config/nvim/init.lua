@@ -315,5 +315,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- main intended use is for sending current line to terminal buffer
 vim.keymap.set('n', '<leader>tt', 'yy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
 vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
