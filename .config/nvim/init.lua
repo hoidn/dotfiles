@@ -271,6 +271,7 @@ vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
 require'lspconfig'.pyright.setup{}
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', 'gb', '<cmd>split<CR><cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {noremap=true, silent=true})
 
 
 local cmp = require'cmp'
@@ -315,3 +316,4 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', '<leader>tt', 'yy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
+vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
