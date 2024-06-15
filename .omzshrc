@@ -72,8 +72,9 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $HOME/.shrc
 source $ZSH/oh-my-zsh.sh
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source $HOME/.shrc
 
 # User configuration
 

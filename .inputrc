@@ -9,3 +9,6 @@
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+
+set editing-mode emacs
+"\C-e": "\C-a\C-k\C-uedit-command-line\C-j"
