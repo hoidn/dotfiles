@@ -3,8 +3,8 @@ set path=$PWD/**
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'MunifTanjim/nui.nvim'
@@ -24,6 +24,9 @@ Plug 'hrsh7th/cmp-cmdline'
 "Plug 'hrsh7th/cmp-vsnip' -- For snippet support
 "Plug 'hrsh7th/vim-vsnip' -- Snippet engine
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim'
+Plug 'tzachar/fuzzy.nvim'
+Plug 'tzachar/cmp-fuzzy-path'
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -319,3 +322,9 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>tt', 'yy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
 vim.keymap.set('v', '<leader>tv', 'y<C-w>w:put!<CR><C-w>p<C-w>wa', {})
 vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
+
+-- Jump to next diagnostic
+vim.keymap.set('n', '<leader>o', vim.diagnostic.goto_next, {noremap = true, silent = true})
+-- Jump to previous diagnostic
+vim.keymap.set('n', '<leader>g', vim.diagnostic.goto_prev, {noremap = true, silent = true})
+
