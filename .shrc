@@ -16,6 +16,7 @@ source $HOME/.openai
 export EDITOR=nvim
 alias vi=nvim
 alias gcc=gcc-12
+alias lv='NVIM_APPNAME=lazyvim nvim'
 
 #export EDITOR=vim
 #alias vi=vim
