@@ -98,3 +98,6 @@
 [submodule ".vim/bundle/leap.nvim"]
 	path = .vim/bundle/leap.nvim
 	url = git@github.com:ggandor/leap.nvim.git
+[submodule "/home/ollie/dotfiles/.config/lazyvim"]
+	path = /home/ollie/dotfiles/.config/lazyvim
+	url = https://github.com/LazyVim/starter
