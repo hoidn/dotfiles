@@ -15,6 +15,10 @@ Plug 'ggandor/leap.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'ibhagwan/fzf-lua'
+" Plug 'frankroeder/parrot.nvim'
+
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -23,7 +27,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 "Plug 'hrsh7th/cmp-vsnip' -- For snippet support
 "Plug 'hrsh7th/vim-vsnip' -- Snippet engine
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
@@ -302,9 +306,52 @@ cmp.setup({
 })
 
 -- Setup lspconfig.
-require('lspconfig')['pyright'].setup {
-  capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+-- require('lspconfig')['pyright'].setup {
+--   capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- }
+-- 
+-- {
+--   "frankroeder/parrot.nvim",
+--   dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+--   -- optionally include "rcarriga/nvim-notify" for beautiful notifications
+--   config = function()
+--     require("parrot").setup {
+--       -- Providers must be explicitly added to make them available.
+--       providers = {
+--         anthropic = {
+--           api_key = os.getenv "ANTHROPIC_API_KEY",
+--         },
+--         gemini = {
+--           api_key = os.getenv "GEMINI_API_KEY",
+--         },
+--         groq = {
+--           api_key = os.getenv "GROQ_API_KEY",
+--         },
+--         mistral = {
+--           api_key = os.getenv "MISTRAL_API_KEY",
+--         },
+--         pplx = {
+--           api_key = os.getenv "PERPLEXITY_API_KEY",
+--         },
+--         -- provide an empty list to make provider available (no API key required)
+--         ollama = {},
+--         openai = {
+--           api_key = os.getenv "OPENAI_API_KEY",
+--         },
+--         github = {
+--           api_key = os.getenv "GITHUB_TOKEN",
+--         },
+--         nvidia = {
+--           api_key = os.getenv "NVIDIA_API_KEY",
+--         },
+--         xai = {
+--           api_key = os.getenv "XAI_API_KEY",
+--         },
+--       },
+--     }
+--   end,
+-- }
+-- 
 
 function search_custom_dir()
   local input_dir = vim.fn.input("Enter directory: ", "", "file")
