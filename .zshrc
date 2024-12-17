@@ -189,6 +189,20 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey "^e" edit-command-line
 
+# Force zsh to write command to temp file before editing.
+# This is a workaround after the standard setup suddenly stopped working
+export VISUAL="nvim"  # Ensure VISUAL is set for ZLE
+zle_use_ctrl_e() {
+    local tmpfile=$(mktemp)
+    echo "$BUFFER" > "$tmpfile"
+    nvim "$tmpfile" </dev/tty >/dev/tty
+    BUFFER="$(<$tmpfile)"
+    rm -f "$tmpfile"
+    zle reset-prompt
+}
+zle -N zle_use_ctrl_e
+bindkey '^e' zle_use_ctrl_e
+
 # Make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -401,14 +415,14 @@ source ~/.shrc
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ollie/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/ollie/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/ollie/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ollie/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/ollie/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ollie/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/ollie/anaconda3/bin:$PATH"
+        export PATH="/Users/ollie/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
