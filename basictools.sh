@@ -1,4 +1,4 @@
-sudo apt install fzf fasd socat ranger fd-find
+#sudo apt install fzf fasd socat ranger fd-find
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
 mkdir -p $HOME/.local/bin
