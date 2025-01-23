@@ -32,6 +32,8 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
 
+Plug 'ggml-org/llama.vim'
+
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
 call plug#end()
