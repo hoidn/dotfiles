@@ -12,6 +12,10 @@ Plug 'dpayne/CodeGPT.nvim'
 Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'ggandor/leap.nvim'
+Plug 'GeorgesAlkhouri/nvim-aider'
+Plug 'folke/snacks.nvim'
+Plug 'catppuccin/nvim'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 
@@ -376,6 +380,50 @@ vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>o', vim.diagnostic.goto_next, {noremap = true, silent = true})
 -- Jump to previous diagnostic
 vim.keymap.set('n', '<leader>g', vim.diagnostic.goto_prev, {noremap = true, silent = true})
+
+-- Aider keymaps
+vim.api.nvim_set_keymap('n', '<leader>a/', '<cmd>AiderTerminalToggle<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
+vim.api.nvim_set_keymap('v', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ac', '<cmd>AiderQuickSendCommand<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ab', '<cmd>AiderQuickSendBuffer<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>a+', '<cmd>AiderQuickAddFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>a-', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ar', '<cmd>AiderQuickReadOnlyFile<cr>', {noremap = true})
+
+-- Aider configuration
+require("nvim_aider").setup({
+  -- Command line arguments passed to aider
+  args = {
+    "--model", "o3-mini", 
+    "--reasoning-effort", "high", 
+    "--architect", 
+    "--editor-model", "claude-3-5-sonnet-20241022",
+  },
+
+  -- Theme colors
+  theme = {
+    user_input_color = "#a6da95",
+    tool_output_color = "#8aadf4",
+    tool_error_color = "#ed8796",
+    tool_warning_color = "#eed49f",
+    assistant_output_color = "#c6a0f6",
+    completion_menu_color = "#cad3f5",
+    completion_menu_bg_color = "#24273a",
+    completion_menu_current_color = "#181926",
+    completion_menu_current_bg_color = "#f4dbd6",
+  },
+
+  config = {
+    os = { editPreset = "nvim-remote" },
+    gui = { nerdFontsVersion = "3" },
+  },
+
+  win = {
+    style = "nvim_aider",
+    position = "bottom",
+  },
+})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
