@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 set path=$PWD/**
 
 call plug#begin('~/.local/share/nvim/plugged')
