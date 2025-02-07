@@ -3,8 +3,6 @@ set path=$PWD/**
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'MunifTanjim/nui.nvim'
@@ -12,8 +10,8 @@ Plug 'dpayne/CodeGPT.nvim'
 Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'ggandor/leap.nvim'
-Plug 'GeorgesAlkhouri/nvim-aider'
 Plug 'folke/snacks.nvim'
+Plug 'GeorgesAlkhouri/nvim-aider'
 Plug 'catppuccin/nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
@@ -37,6 +35,9 @@ Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
 
 Plug 'ggml-org/llama.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -391,6 +392,8 @@ vim.api.nvim_set_keymap('n', '<leader>a+', '<cmd>AiderQuickAddFile<cr>', {norema
 vim.api.nvim_set_keymap('n', '<leader>a-', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>ar', '<cmd>AiderQuickReadOnlyFile<cr>', {noremap = true})
 
+require('snacks').setup()
+
 -- Aider configuration
 require("nvim_aider").setup({
   -- Command line arguments passed to aider
@@ -425,75 +428,4 @@ require("nvim_aider").setup({
   },
 })
 
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
 
--- Configure plugins
-require("lazy").setup({
-{ "GeorgesAlkhouri/nvim-aider",
-    cmd = {
-      "AiderTerminalToggle", "AiderHealth",
-    },
-    keys = {
-      { "<leader>a/", "<cmd>AiderTerminalToggle<cr>", desc = "Open Aider" },
-      { "<leader>as", "<cmd>AiderTerminalSend<cr>", desc = "Send to Aider", mode = { "n", "v" } },
-      { "<leader>ac", "<cmd>AiderQuickSendCommand<cr>", desc = "Send Command To Aider" },
-      { "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>", desc = "Send Buffer To Aider" },
-      { "<leader>a+", "<cmd>AiderQuickAddFile<cr>", desc = "Add File to Aider" },
-      { "<leader>a-", "<cmd>AiderQuickDropFile<cr>", desc = "Drop File from Aider" },
-      { "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", desc = "Add File as Read-Only" },
-      -- Example nvim-tree.lua integration if needed
-      { "<leader>a+", "<cmd>AiderTreeAddFile<cr>", desc = "Add File from Tree to Aider", ft = "NvimTree" },
-      { "<leader>a-", "<cmd>AiderTreeDropFile<cr>", desc = "Drop File from Tree from Aider", ft = "NvimTree" },
-    },
-    dependencies = {
-      "folke/snacks.nvim",
-      "nvim-telescope/telescope.nvim",
-      --- The below dependencies are optional
-      "catppuccin/nvim",
-      "nvim-tree/nvim-tree.lua",
-    },
-    config = true, }
-})
-
-require("nvim_aider").setup({
-  -- Command line arguments passed to aider
-  args = {
-	"--model", "o3-mini", "--reasoning-effort", "high", "--architect", "--editor-model", "claude-3-5-sonnet-20241022",
-  },
-
-  -- Theme colors (automatically uses Catppuccin flavor if available)
-  theme = {
-    user_input_color = "#a6da95",
-    tool_output_color = "#8aadf4",
-    tool_error_color = "#ed8796",
-    tool_warning_color = "#eed49f",
-    assistant_output_color = "#c6a0f6",
-    completion_menu_color = "#cad3f5",
-    completion_menu_bg_color = "#24273a",
-    completion_menu_current_color = "#181926",
-    completion_menu_current_bg_color = "#f4dbd6",
-  },
-
-  -- Other snacks.terminal.Opts options
-  config = {
-    os = { editPreset = "nvim-remote" },
-    gui = { nerdFontsVersion = "3" },
-  },
-
-  win = {
-    style = "nvim_aider",
-    position = "bottom",
-  },
-})
