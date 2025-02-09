@@ -388,9 +388,9 @@ vim.api.nvim_set_keymap('n', '<leader>as', '<cmd>AiderTerminalSend<cr>', {norema
 vim.api.nvim_set_keymap('v', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>ac', '<cmd>AiderQuickSendCommand<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>ab', '<cmd>AiderQuickSendBuffer<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>a+', '<cmd>AiderQuickAddFile<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>a-', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>ar', '<cmd>AiderQuickReadOnlyFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>aa', '<cmd>AiderQuickAddFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>am', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
 
 require('snacks').setup()
 
