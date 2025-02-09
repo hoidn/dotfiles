@@ -1,10 +1,8 @@
-vim.cmd [[
+vim.cmd([[
 set path=$PWD/**
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'MunifTanjim/nui.nvim'
@@ -12,6 +10,10 @@ Plug 'dpayne/CodeGPT.nvim'
 Plug '/home/ollie/Documents/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug 'ggandor/leap.nvim'
+Plug 'folke/snacks.nvim'
+Plug 'GeorgesAlkhouri/nvim-aider'
+Plug 'catppuccin/nvim'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 
@@ -31,6 +33,11 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
+
+Plug 'ggml-org/llama.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -270,7 +277,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "vnoremap <leader>p "_dP
 nnoremap <leader>p :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
-]]
+]])
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
 
@@ -374,4 +381,51 @@ vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>o', vim.diagnostic.goto_next, {noremap = true, silent = true})
 -- Jump to previous diagnostic
 vim.keymap.set('n', '<leader>g', vim.diagnostic.goto_prev, {noremap = true, silent = true})
+
+-- Aider keymaps
+vim.api.nvim_set_keymap('n', '<leader>a/', '<cmd>AiderTerminalToggle<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
+vim.api.nvim_set_keymap('v', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ac', '<cmd>AiderQuickSendCommand<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ab', '<cmd>AiderQuickSendBuffer<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>ar', '<cmd>AiderQuickReadOnlyFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>aa', '<cmd>AiderQuickAddFile<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>am', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
+
+require('snacks').setup()
+
+-- Aider configuration
+require("nvim_aider").setup({
+  -- Command line arguments passed to aider
+  args = {
+    "--model", "o3-mini", 
+    "--reasoning-effort", "high", 
+    "--architect", 
+    "--editor-model", "claude-3-5-sonnet-20241022",
+  },
+
+  -- Theme colors
+  theme = {
+    user_input_color = "#a6da95",
+    tool_output_color = "#8aadf4",
+    tool_error_color = "#ed8796",
+    tool_warning_color = "#eed49f",
+    assistant_output_color = "#c6a0f6",
+    completion_menu_color = "#cad3f5",
+    completion_menu_bg_color = "#24273a",
+    completion_menu_current_color = "#181926",
+    completion_menu_current_bg_color = "#f4dbd6",
+  },
+
+  config = {
+    os = { editPreset = "nvim-remote" },
+    gui = { nerdFontsVersion = "3" },
+  },
+
+  win = {
+    style = "nvim_aider",
+    position = "bottom",
+  },
+})
+
 
