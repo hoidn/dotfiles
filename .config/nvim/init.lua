@@ -49,6 +49,8 @@ let mapleader=" "
 nnoremap , za
 
 imap jk <Esc>
+imap kj <Esc>
+
 " Match default binding in Spacemacs
 imap fd <Esc>
 map <leader>h :wincmd h<CR>
@@ -382,7 +384,7 @@ vim.keymap.set('n', '<leader>o', vim.diagnostic.goto_next, {noremap = true, sile
 -- Jump to previous diagnostic
 vim.keymap.set('n', '<leader>g', vim.diagnostic.goto_prev, {noremap = true, silent = true})
 
--- Aider keymaps
+-- aider keymaps
 vim.api.nvim_set_keymap('n', '<leader>a/', '<cmd>AiderTerminalToggle<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
 vim.api.nvim_set_keymap('v', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
