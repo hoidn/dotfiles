@@ -16,6 +16,8 @@ Plug 'catppuccin/nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
+Plug 'milanglacier/minuet-ai.nvim'
+Plug 'Saghen/blink.cmp'
 
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'ibhagwan/fzf-lua'
@@ -433,23 +435,7 @@ require("nvim_aider").setup({
   },
 })
 
-specs = {
-    {
-        'milanglacier/minuet-ai.nvim',
-        config = function()
-            require('minuet').setup {
-                -- Your configuration options here
-            }
-        end,
-    },
-    { 'nvim-lua/plenary.nvim' },
-    -- optional, if you are using virtual-text frontend, nvim-cmp is not
-    -- required.
-    { 'hrsh7th/nvim-cmp' },
-    -- optional, if you are using virtual-text frontend, blink is not required.
-    { 'Saghen/blink.cmp' },
-}
-
+-- Minuet AI configuration
 require('minuet').setup {
     virtualtext = {
         auto_trigger_ft = {},
