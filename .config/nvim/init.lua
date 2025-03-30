@@ -16,8 +16,7 @@ Plug 'catppuccin/nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
-Plug 'milanglacier/minuet-ai.nvim'
-Plug 'Saghen/blink.cmp'
+
 
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'ibhagwan/fzf-lua'
@@ -36,10 +35,16 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
 
-Plug 'ggml-org/llama.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'milanglacier/minuet-ai.nvim'
+Plug 'Saghen/blink.cmp'
+
+Plug 'ggml-org/llama.vim'
+
+"Plug 'huggingface/llm.nvim'
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -441,9 +446,9 @@ require('minuet').setup {
         auto_trigger_ft = {},
         keymap = {
             -- accept whole completion
-            accept = '<A-A>',
+            accept = '<C-S>',
             -- accept one line
-            accept_line = '<A-a>',
+            accept_line = '<A-Tab>',
             -- accept n lines (prompts for number)
             -- e.g. "A-z 2 CR" will accept 2 lines
             accept_n_lines = '<A-z>',
@@ -455,3 +460,7 @@ require('minuet').setup {
         },
     },
 }
+
+--require('llm').setup({
+--  -- cf Setup
+--})
