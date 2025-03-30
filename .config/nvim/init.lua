@@ -173,7 +173,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = {
     \ "mode": "passive",
         \ "active_filetypes": ["python"] }
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['mypy']
 
 	
 let g:ycm_server_keep_logfiles = 1
@@ -284,6 +284,7 @@ nnoremap <leader>G :GGrep<Space>
 ]])
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
+vim.api.nvim_set_keymap('t', 'k', '<C-\\><C-n>', {noremap = true})
 
 -- lsp configuration and lsp keybindings
 require'lspconfig'.pyright.setup{}
@@ -432,4 +433,39 @@ require("nvim_aider").setup({
   },
 })
 
+specs = {
+    {
+        'milanglacier/minuet-ai.nvim',
+        config = function()
+            require('minuet').setup {
+                -- Your configuration options here
+            }
+        end,
+    },
+    { 'nvim-lua/plenary.nvim' },
+    -- optional, if you are using virtual-text frontend, nvim-cmp is not
+    -- required.
+    { 'hrsh7th/nvim-cmp' },
+    -- optional, if you are using virtual-text frontend, blink is not required.
+    { 'Saghen/blink.cmp' },
+}
 
+require('minuet').setup {
+    virtualtext = {
+        auto_trigger_ft = {},
+        keymap = {
+            -- accept whole completion
+            accept = '<A-A>',
+            -- accept one line
+            accept_line = '<A-a>',
+            -- accept n lines (prompts for number)
+            -- e.g. "A-z 2 CR" will accept 2 lines
+            accept_n_lines = '<A-z>',
+            -- Cycle to prev completion item, or manually invoke completion
+            prev = '<A-[>',
+            -- Cycle to next completion item, or manually invoke completion
+            next = '<A-]>',
+            dismiss = '<A-e>',
+        },
+    },
+}
