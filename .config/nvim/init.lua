@@ -291,7 +291,7 @@ nnoremap <leader>G :GGrep<Space>
 ]])
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
-vim.api.nvim_set_keymap('t', 'k', '<C-\\><C-n>', {noremap = true})
+vim.api.nvim_set_keymap('t', 'kj', '<C-\\><C-n>', {noremap = true})
 
 -- lsp configuration and lsp keybindings
 require'lspconfig'.pyright.setup{}
