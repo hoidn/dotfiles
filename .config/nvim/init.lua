@@ -17,6 +17,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
 
+
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'ibhagwan/fzf-lua'
 " Plug 'frankroeder/parrot.nvim'
@@ -34,10 +35,16 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'tzachar/fuzzy.nvim'
 Plug 'tzachar/cmp-fuzzy-path'
 
-Plug 'ggml-org/llama.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'milanglacier/minuet-ai.nvim'
+Plug 'Saghen/blink.cmp'
+
+Plug 'ggml-org/llama.vim'
+
+"Plug 'huggingface/llm.nvim'
 
 autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
@@ -49,6 +56,8 @@ let mapleader=" "
 nnoremap , za
 
 imap jk <Esc>
+imap kj <Esc>
+
 " Match default binding in Spacemacs
 imap fd <Esc>
 map <leader>h :wincmd h<CR>
@@ -171,7 +180,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = {
     \ "mode": "passive",
         \ "active_filetypes": ["python"] }
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['mypy']
 
 	
 let g:ycm_server_keep_logfiles = 1
@@ -277,9 +286,12 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "vnoremap <leader>p "_dP
 nnoremap <leader>p :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+nnoremap <leader>G :GGrep<Space>
 ]])
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
+vim.api.nvim_set_keymap('t', 'kj', '<C-\\><C-n>', {noremap = true})
 
 -- lsp configuration and lsp keybindings
 require'lspconfig'.pyright.setup{}
@@ -382,7 +394,7 @@ vim.keymap.set('n', '<leader>o', vim.diagnostic.goto_next, {noremap = true, sile
 -- Jump to previous diagnostic
 vim.keymap.set('n', '<leader>g', vim.diagnostic.goto_prev, {noremap = true, silent = true})
 
--- Aider keymaps
+-- aider keymaps
 vim.api.nvim_set_keymap('n', '<leader>a/', '<cmd>AiderTerminalToggle<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
 vim.api.nvim_set_keymap('v', '<leader>as', '<cmd>AiderTerminalSend<cr>', {noremap = true})
@@ -428,4 +440,27 @@ require("nvim_aider").setup({
   },
 })
 
+-- Minuet AI configuration
+require('minuet').setup {
+    virtualtext = {
+        auto_trigger_ft = {},
+        keymap = {
+            -- accept whole completion
+            accept = '<C-S>',
+            -- accept one line
+            accept_line = '<A-Tab>',
+            -- accept n lines (prompts for number)
+            -- e.g. "A-z 2 CR" will accept 2 lines
+            accept_n_lines = '<A-z>',
+            -- Cycle to prev completion item, or manually invoke completion
+            prev = '<A-[>',
+            -- Cycle to next completion item, or manually invoke completion
+            next = '<A-]>',
+            dismiss = '<A-e>',
+        },
+    },
+}
 
+--require('llm').setup({
+--  -- cf Setup
+--})
