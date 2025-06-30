@@ -156,33 +156,35 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ollie/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/ollie/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/ollie/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ollie/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/ollie/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ollie/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/ollie/anaconda3/bin:$PATH"
+        export PATH="/home/ollie/miniconda3/bin:$PATH"
     fi
 fi
 
 unset __conda_setup
- <<< conda initialize <<<
+# <<< conda initialize <<<
 
-## >>> conda initialize >>>
+## >>> conda initialize (anaconda3 - disabled) >>>
 ## !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/ollie/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#__conda_setup="$('/home/ollie/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 #if [ $? -eq 0 ]; then
 #    eval "$__conda_setup"
 #else
-#    if [ -f "/home/ollie/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/ollie/miniconda3/etc/profile.d/conda.sh"
+#    if [ -f "/home/ollie/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/ollie/anaconda3/etc/profile.d/conda.sh"
 #    else
-#        export PATH="/home/ollie/miniconda3/bin:$PATH"
+#        export PATH="/home/ollie/anaconda3/bin:$PATH"
 #    fi
 #fi
 #
 #unset __conda_setup
+## <<< conda initialize (anaconda3 - disabled) <<<
 
 bind -x '"\C-uedit-command-line": edit-command-line'
+
