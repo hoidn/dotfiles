@@ -1,3 +1,4 @@
+sudo apt install gettext
 cd neovim
 
 # Clean previous build artifacts owned by root
