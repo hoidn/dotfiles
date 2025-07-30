@@ -46,7 +46,6 @@ Plug 'ggml-org/llama.vim'
 
 "Plug 'huggingface/llm.nvim'
 
-autocmd! VimEnter * lua require('leap').set_default_keymaps()
 
 call plug#end()
 
@@ -460,6 +459,8 @@ require('minuet').setup {
         },
     },
 }
+
+require('leap').set_default_keymaps()
 
 --require('llm').setup({
 --  -- cf Setup
