@@ -1,4 +1,4 @@
-sudo apt install fzf fasd socat ranger fd-find
+sudo apt install fzf fasd socat ranger fd-find ripgrep
 # Make directory for vim undo history
 mkdir -p $HOME/.vimundo
 mkdir -p $HOME/.local/bin
@@ -6,6 +6,8 @@ mkdir -p $HOME/.local/bin
 bash copyconfig.sh
 echo "copied configs"
 
+# TODO: install miniconda / conda 
+# TODO: pip install pyright
 
 mkdir -p $HOME/bin
 #cd ~/.vim
