@@ -194,3 +194,8 @@ alias claude="/home/ollie/.claude/local/claude"
 if command -v neofetch &> /dev/null; then
     neofetch
 fi
+export PATH="$HOME/bin:$PATH"
+
+# Add to ~/.bashrc
+osc52() { printf "\033]52;c;%s\a" "$(cat | base64 -w0)"; }
+alias pbcopy='osc52'
