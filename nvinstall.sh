@@ -1,8 +1,9 @@
-sudo apt install gettext
+#sudo apt install gettext
 cd neovim
 
 # Clean previous build artifacts owned by root
-sudo rm -rf build
+rm -rf build
+#sudo rm -rf build
 
 # Build and install to ~/.local
 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"

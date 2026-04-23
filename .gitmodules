@@ -97,7 +97,7 @@
 	url = https://github.com/folke/lazy.nvim.git
 [submodule ".vim/autoload/plug.vim"]
 	path = .vim/autoload/plug.vim
-	url = git@github.com:junegunn/vim-plug.git
+	url = https://github.com/junegunn/vim-plug.git
 [submodule ".vim/bundle/leap.nvim"]
 	path = .vim/bundle/leap.nvim
-	url = git@github.com:ggandor/leap.nvim.git
+	url = https://github.com/ggandor/leap.nvim.git
