@@ -385,7 +385,9 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- main intended use is for sending current line to terminal buffer
 vim.keymap.set('n', '<leader>tl', 'yy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
-vim.keymap.set('n', '<leader>tv', 'vipy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
+-- vim.keymap.set('n', '<leader>tv', 'vipy<C-w>w:put!<CR><C-w>p<C-w>wa', {})
+-- this version leaves cursor in terminal buffer
+vim.keymap.set('n', '<leader>tv', 'vipy<C-w>w:put!<CR>i<CR><C-\\><C-n><C-w>p', {})
 vim.keymap.set('v', '<leader>tt', 'y<C-w>w:put!<CR><C-w>p<C-w>wa', {})
 vim.keymap.set('n', '<leader>r', builtin.lsp_references, {})
 

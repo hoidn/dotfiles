@@ -188,7 +188,6 @@ unset __conda_setup
 bind -x '"\C-uedit-command-line": edit-command-line'
 
 
-alias claude="/home/ollie/.claude/local/claude"
 
 # Run neofetch if it exists
 if command -v neofetch &> /dev/null; then
