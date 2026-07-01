@@ -4,7 +4,8 @@ cd neovim
 sudo rm -rf build
 
 # Build and install to ~/.local
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local"
+make distclean
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 make install
 
 # Create symlink after verifying binary exists
