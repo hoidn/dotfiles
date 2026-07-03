@@ -15,5 +15,4 @@
 #tmux send-keys -t socat1 "socat TCP-LISTEN:3306,fork TCP:localhost:3307" ENTER
 #
 tmux new-session -d -s socat2 'bash -l'
-tmux send-keys -t socat2 "socat TCP-LISTEN:8893,fork TCP:localhost:8893" ENTER
-
+tmux send-keys -t socat2 "socat TCP-LISTEN:8893,fork TCP:localhost:8890" ENTER
