@@ -6,7 +6,7 @@
 
   // OpenCode uses this for internal lightweight operations.
   // Delegated exploration is configured separately below.
-  "small_model": "openrouter/deepseek/deepseek-v4-flash-0731",
+  "small_model": "deepseek/deepseek-v4-flash",
 
   "default_agent": "build",
   "subagent_depth": 1,
@@ -74,14 +74,14 @@
       }
     },
 
-    // OMP: task = openrouter/deepseek/deepseek-v4-pro-0813:high
+    // OMP: task = deepseek/deepseek-v4-pro:high
     //
     // OpenCode's built-in general subagent is the closest equivalent:
     // full-access, multi-step delegated work.
     "general": {
       "description": "Implements bounded delegated coding tasks",
       "mode": "subagent",
-      "model": "openrouter/deepseek/deepseek-v4-pro-0813",
+      "model": "deepseek/deepseek-v4-pro",
       "variant": "high",
       "prompt": "Implement the delegated task autonomously. Inspect existing conventions, make focused changes, preserve unrelated work, and run appropriate tests. Report files changed, verification results, unresolved failures, and uncertain assumptions.",
       "permission": {
@@ -97,14 +97,14 @@
       }
     },
 
-    // OMP: smol = openrouter/deepseek/deepseek-v4-flash-0731:medium
+    // OMP: smol = deepseek/deepseek-v4-flash:high
     //
     // explore handles local codebase searches.
     "explore": {
       "description": "Fast read-only local codebase exploration",
       "mode": "subagent",
-      "model": "openrouter/deepseek/deepseek-v4-flash-0731",
-      "variant": "medium",
+      "model": "deepseek/deepseek-v4-flash",
+      "variant": "high",
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -122,8 +122,8 @@
     "scout": {
       "description": "Fast external documentation and dependency research",
       "mode": "subagent",
-      "model": "openrouter/deepseek/deepseek-v4-flash-0731",
-      "variant": "medium",
+      "model": "deepseek/deepseek-v4-flash",
+      "variant": "high",
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -163,18 +163,10 @@
     }
   },
 
-  // Mirrors ~/.omp/agent/models.yml: pin OpenRouter upstreams for cache affinity.
+  // Register providers used by configured model roles.
   "provider": {
-    "openrouter": {
-      "models": {
-        "deepseek/deepseek-v4-pro-0813": {
-          "options": { "provider": { "only": ["gmicloud"], "allow_fallbacks": false } }
-        },
-        "deepseek/deepseek-v4-flash-0731": {
-          "options": { "provider": { "only": ["novita"], "allow_fallbacks": false } }
-        }
-      }
-    },
+    "openrouter": {},
+    "deepseek": {},
 
     // GLM Coding Plan (glm-5.3). Auth: `opencode auth login` -> Z.ai Coding Plan.
     "zai-coding-plan": {}

@@ -1,7 +1,7 @@
 ---
 name: implementer
 description: Implements delegated coding tasks and runs verification
-model: openrouter/deepseek/deepseek-v4-pro-0813:high
+model: deepseek/deepseek-v4-pro:high
 tools: read, write, edit, bash
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: scout
 description: Fast, inexpensive codebase exploration and information gathering
-model: openrouter/deepseek/deepseek-v4-flash-0731:high
+model: deepseek/deepseek-v4-flash:high
 tools: read, grep, find, ls, bash
 ---
 

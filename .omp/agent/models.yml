@@ -1,16 +1,4 @@
 providers:
-  openrouter:
-    modelOverrides:
-      deepseek/deepseek-v4-pro-0813:
-        compat:
-          openRouterRouting:
-            only: [gmicloud]
-            allow_fallbacks: false
-      deepseek/deepseek-v4-flash-0731:
-        compat:
-          openRouterRouting:
-            only: [novita]
-            allow_fallbacks: false
 
   zai:
     baseUrl: https://api.z.ai/api/anthropic
