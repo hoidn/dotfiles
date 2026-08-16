@@ -1,6 +1,6 @@
 setupVersion: 1
 modelRoles: 
-  default: zai/glm-5.3:max
+  default: anthropic/claude-fable-5:max
   smol: openrouter/z-ai/glm-5.2:medium
   task: openrouter/z-ai/glm-5.2:high
 advisor: 
