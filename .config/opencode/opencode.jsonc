@@ -16,8 +16,10 @@
     "build": {
       "description": "Main coordinator and final integrator",
       "mode": "primary",
-      "model": "anthropic/claude-fable-5",
-      "variant": "xhigh",
+      // "model": "anthropic/claude-fable-5",
+      // "variant": "xhigh",
+      "model": "openrouter/moonshotai/kimi-k3",
+      "variant": "max",
       "prompt": "Act as the main coordinator and final integrator. Use general for delegated implementation, explore or scout for inexpensive research, and advisor for independent review of consequential plans or implementations. Evaluate all delegated output yourself and perform final verification.",
       "permission": {
         "edit": "allow",
@@ -54,8 +56,10 @@
     "slow": {
       "description": "Maximum-effort primary mode for difficult tasks",
       "mode": "primary",
-      "model": "anthropic/claude-fable-5",
-      "variant": "xhigh",
+      // "model": "anthropic/claude-fable-5",
+      // "variant": "xhigh",
+      "model": "openrouter/moonshotai/kimi-k3",
+      "variant": "max",
       "prompt": "Handle difficult reasoning, design, and integration tasks with maximum effort. Delegate bounded work where useful, but personally evaluate evidence and verify the final result.",
       "permission": {
         "edit": "allow",

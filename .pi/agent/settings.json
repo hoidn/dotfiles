@@ -1,5 +1,5 @@
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-fable-5",
+  "defaultProvider": "openrouter",
+  "defaultModel": "moonshotai/kimi-k3",
   "defaultThinkingLevel": "xhigh"
 }
