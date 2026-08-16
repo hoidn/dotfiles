@@ -1,5 +1,5 @@
 {
   "defaultProvider": "anthropic",
   "defaultModel": "claude-fable-5",
-  "defaultThinkingLevel": "max"
+  "defaultThinkingLevel": "xhigh"
 }
