@@ -11,3 +11,29 @@ providers:
           openRouterRouting:
             only: [novita]
             allow_fallbacks: false
+
+  zai:
+    baseUrl: https://api.z.ai/api/anthropic
+    # Schema requires apiKey for custom models, but a static value here would
+    # shadow the stored zai login credential. This command reads the stored
+    # key from omp's own auth DB at runtime, so no secret lives in this file.
+    apiKey: "!sqlite3 /home/ollie/.omp/agent/agent.db \"select json_extract(data,'$.key') from auth_credentials where provider='zai' and credential_type='api_key' limit 1\""
+    models:
+      # GLM-5.3 (2026-08-14): coding-plan only; not in bundled catalog yet.
+      # Shape cloned from catalog glm-5.2 (same base); cost = 5.2 list price
+      # placeholder until 5.3 API pricing is published.
+      - id: glm-5.3
+        name: GLM-5.3
+        api: anthropic-messages
+        reasoning: true
+        input: [text]
+        contextWindow: 1000000
+        maxTokens: 131072
+        cost:
+          input: 1.4
+          output: 4.4
+          cacheRead: 0.26
+          cacheWrite: 0
+        thinking:
+          mode: anthropic-budget-effort
+          efforts: [high, max]
