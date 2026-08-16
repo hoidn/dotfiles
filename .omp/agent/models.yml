@@ -1,0 +1,11 @@
+providers:
+  openrouter:
+    modelOverrides:
+      deepseek/deepseek-v4-pro-0813:
+        compat:
+          openRouterRouting:
+            only: [gmicloud]
+      deepseek/deepseek-v4-flash-0731:
+        compat:
+          openRouterRouting:
+            only: [novita]

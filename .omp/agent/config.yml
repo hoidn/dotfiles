@@ -1,11 +1,10 @@
 setupVersion: 1
 modelRoles: 
-  task: deepseek/deepseek-v4-pro:high
-  smol: deepseek/deepseek-v4-pro:high
-  plan: openai-codex/gpt-5.6-sol:max
-  slow: openai-codex/gpt-5.6-sol:max
-  advisor: openai-codex/gpt-5.6-sol:max
-  default: openai-codex/gpt-5.6-sol:max
+  default: openrouter/deepseek/deepseek-v4-pro-0813:max
+  smol: openrouter/deepseek/deepseek-v4-flash-0731:medium
+  task: openrouter/deepseek/deepseek-v4-pro-0813:high
 advisor: 
   enabled: true
   syncBacklog: "1"
+dev: 
+  autoqaConsent: granted
