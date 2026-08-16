@@ -5,7 +5,9 @@ providers:
         compat:
           openRouterRouting:
             only: [gmicloud]
+            allow_fallbacks: false
       deepseek/deepseek-v4-flash-0731:
         compat:
           openRouterRouting:
             only: [novita]
+            allow_fallbacks: false
