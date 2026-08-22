@@ -11,4 +11,4 @@ advisor:
 dev: 
   autoqaConsent: granted
 compaction: 
-  thresholdTokens: 250000
+  thresholdTokens: 200000
