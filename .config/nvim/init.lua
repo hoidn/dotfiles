@@ -291,7 +291,8 @@ nnoremap <leader>G :GGrep<Space>
 ]])
 
 vim.api.nvim_set_keymap('t', 'jk', '<C-\\><C-n>', {noremap = true})
-vim.api.nvim_set_keymap('t', 'kj', '<C-\\><C-n>', {noremap = true})
+-- kj goes to the program as Esc (Claude Code's vim mode: prompt normal mode); jk leaves terminal mode.
+vim.api.nvim_set_keymap('t', 'kj', '<Esc>', {noremap = true})
 
 -- lsp configuration and lsp keybindings
 require'lspconfig'.pyright.setup{}
