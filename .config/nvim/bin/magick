@@ -1,0 +1,18 @@
+#!/bin/bash
+# `magick` for image.nvim on a host that has only ImageMagick 6 (convert, identify), with one addition: a sixel
+# written to stdout is kept under LIMIT bytes by shrinking the image. tmux before 3.6 silently drops an escape
+# sequence longer than 1 MiB, so a larger sixel never reaches the terminal. With tmux >= 3.6 raise
+# `input-buffer-size` there and delete this file.
+LIMIT=1000000
+
+[ "$1" = identify ] && { shift; exec identify "$@"; }
+[ "$1" = convert ] && shift
+[ "${!#}" = sixel:- ] || exec convert "$@"
+
+out=$(mktemp) || exit 1
+trap 'rm -f "$out"' EXIT
+for percent in 100 80 65 50 40 30 20; do
+    convert "${@:1:$#-1}" -resize "$percent%" sixel:- > "$out" || exit 1
+    [ "$(stat -c %s "$out")" -le "$LIMIT" ] && break
+done
+cat "$out"

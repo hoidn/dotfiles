@@ -16,6 +16,7 @@ Plug 'catppuccin/nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-fugitive'
+Plug '3rd/image.nvim'
 
 
 " Plug 'nvim-lua/plenary.nvim'
@@ -407,6 +408,27 @@ vim.api.nvim_set_keymap('n', '<leader>aa', '<cmd>AiderQuickAddFile<cr>', {norema
 vim.api.nvim_set_keymap('n', '<leader>am', '<cmd>AiderQuickDropFile<cr>', {noremap = true})
 
 require('snacks').setup()
+
+-- image.nvim: sixel because the terminals here (iTerm2 through tmux) have no kitty graphics protocol.
+-- bin/magick keeps each sixel under tmux's 1 MiB limit; image.nvim prefers `magick` when it is on PATH.
+vim.env.PATH = vim.fn.stdpath('config') .. '/bin:' .. vim.env.PATH
+require('image').setup({
+  backend = 'sixel',
+  processor = 'magick_cli',
+})
+
+-- Black background in terminal splits. Stays below `colo`: a colorscheme change clears the group.
+vim.api.nvim_set_hl(0, 'TermBg', { bg = '#000000' })
+vim.api.nvim_create_autocmd('TermOpen', {
+  callback = function()
+    vim.opt_local.winhighlight = 'Normal:TermBg'
+    vim.opt_local.scrollback = 100000   -- the maximum; the default is 10000
+  end,
+})
+
+-- Claude Code started from a terminal split uses its classic renderer, so the conversation is in the terminal
+-- buffer and normal-mode motions work on it. Outside nvim it keeps its own setting.
+vim.env.CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN = '1'
 
 -- Aider configuration
 require("nvim_aider").setup({
